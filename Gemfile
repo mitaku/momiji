@@ -8,6 +8,7 @@ gem 'rails', '3.2.8'
 gem 'sqlite3'
 
 gem 'haml-rails'
+gem 'devise'
 
 group :develpment do
   gem 'pry-rails'
