@@ -1,0 +1,34 @@
+!!! 5
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %title Momiji
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    %meta{:content => "", :name => "description"}
+    %meta{:content => "", :name => "author"}
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    /[if lt IE 9]
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    %link{:href => "/favicon.ico", :rel => "shortcut icon"}
+    %link{:href => "/apple-touch-icon.png", :rel => "apple-touch-icon"}
+  %body(class="#{controller_name} #{controller_name}_#{action_name}")
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand{:href => "#"} Momiji
+    #wrap
+      #main.container
+        .row
+          .span2
+            = yield :sidemenu
+          .span10
+            = yield
+    %hr
+      .footer
+        %footer
+          %p &copy; Company 2012
