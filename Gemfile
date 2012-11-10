@@ -7,6 +7,11 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 
+gem 'haml-rails'
+
+group :develpment do
+  gem 'pry-rails'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -18,6 +23,13 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
+
+  gem 'bootstrap-sass', '~> 2.1.1.0'
+  gem 'compass-rails'
+  gem 'sassy-buttons'
+  gem 'font-awesome-sass-rails'
+  gem 'zurui-sass-rails'
 end
 
 gem 'jquery-rails'
