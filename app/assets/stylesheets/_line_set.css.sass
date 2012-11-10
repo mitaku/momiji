@@ -1,0 +1,21 @@
+@mixin lines-set
+  letter-spacing: 1px
+  padding: 10px
+  @include zurui-ts-000(.1)
+  @include zurui-box-outer
+
+.line-top
+  @include lines-set
+  @include zurui-line-top(.1, 1.0)
+
+.line-right
+  @include lines-set
+  @include zurui-line-right(.1, 1.0)
+
+.line-left
+  @include lines-set
+  @include zurui-line-left(.1, 1.0)
+
+.line-bottom
+  @include lines-set
+  @include zurui-line-bottom(.1, 1.0)

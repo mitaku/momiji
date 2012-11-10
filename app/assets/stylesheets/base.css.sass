@@ -1,0 +1,61 @@
+@import colors/background_image
+
+$textColor: $base-text-color
+
+$bodyBackground: $base-color
+
+$heroUnitBackground: $main-color
+$heroUnitHeadingColor: $hero-unit-text-color
+$heroUnitLeadColor: $hero-unit-text-color
+
+$btnPrimaryBackground: $accent-color
+$btnPrimaryBackgroundHighlight: adjust-hue($btnPrimaryBackground, 5%)
+
+$btnBackground: $base-color
+$btnBackgroundHighlight: darken($base-color, 10%)
+$btnBorder: darken($base-color, 10%)
+
+$navbarBackgroundHighlight: $base-color
+$navbarBackground: $base-color
+
+$navbarText: $base-text-color
+$navbarLinkColor: $base-text-color
+$navbarLinkColorHover: $base-text-color - 60
+$navbarLinkColorActive: darken($base-text-color, 5%)
+$navbarLinkBackgroundHover: $base-color - 10
+$navbarLinkBackgroundActive: darken($navbarBackground, 5%)
+$navbarBrandColor: $base-text-color
+
+$hrBorder: darken($base-color, 10%)
+
+@import bootstrap
+@import bootstrap-responsive
+@import compass/utilities
+@import compass/css3
+@import font-awesome
+@import sassy-buttons
+@import zurui-sass
+@import line_set
+
+
+html
+  height: 100%
+
+body
+  padding: 60px 0 0
+  height: 100%
+
+  #wrap
+    min-height: 100%
+
+  #main
+    overflow: auto
+    padding-bottom: 150px
+
+  .footer
+    position: relative
+    margin-top: -150px
+    height: 150px
+    clear: both
+    padding-top: 20px
+
