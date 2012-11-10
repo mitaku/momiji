@@ -10,7 +10,7 @@ gem 'sqlite3'
 gem 'haml-rails'
 gem 'devise'
 
-group :develpment do
+group :development do
   gem 'pry-rails'
 end
 
