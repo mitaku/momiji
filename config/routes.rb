@@ -1,4 +1,11 @@
 Momiji::Application.routes.draw do
+
+  devise_for :users
+
+  resources :companies, :path => '/', :only => [] do
+    get '/' => 'dashboard#index'
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
