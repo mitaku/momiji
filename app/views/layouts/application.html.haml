@@ -16,11 +16,7 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand{:href => "#"} Momiji
+          = render 'layouts/navigation'
     #wrap
       #main.container
         .row
@@ -28,7 +24,6 @@
             = yield :sidemenu
           .span10
             = yield
-    %hr
-      .footer
-        %footer
-          %p &copy; Company 2012
+    .footer.line-top
+      %footer
+        %p &copy; Company 2012
