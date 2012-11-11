@@ -1,19 +1,4 @@
 = content_for :sidebar do
-  .search_form
-    = form_tag [target_company.becomes(Company), :users], :method => 'GET' do |f|
-      %input.search-query{:placeholder => 'Search', :name => "q"}
+  = render_cell :user, :index
 
-  .users_area
-    - @users.each do |u|
-      .user_area.line-bottom
-        .image_area= image_tag "resource-48x48.png"
-        .info_area
-          .info.first
-            %i.icon-user
-            %span= u.name
-          .info.second
-            %i.icon-envelope
-            %span= u.email
-        .action_area
-          = link_to company_user_path(u.company, u) do
-            %i.icon-book
+%h1 User Index

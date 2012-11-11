@@ -10,6 +10,7 @@ gem 'sqlite3'
 gem 'haml-rails'
 gem 'devise'
 gem 'simple_form'
+gem 'cells'
 
 group :development do
   gem 'pry-rails'
