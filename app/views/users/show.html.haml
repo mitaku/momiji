@@ -1,0 +1,19 @@
+.two_pain
+  .right
+    .summary_area
+      .object-icon= image_tag "resource-48x48.png"
+      .info_area
+        .info.first
+          %i.icon-user
+          %span= @user.name
+        .info.second
+          %i.icon-envelope
+          %span= @user.email
+
+.main_area
+  = render_tabs do |tabs|
+    - tabs.pane '1st' do
+      %h1 1st
+    - tabs.pane '2nd' do
+      %h1 2nd
+

@@ -1,10 +1,12 @@
 Momiji::Application.routes.draw do
 
+
   root :to => "welcome#index"
 
   devise_for :users
 
   resources :companies, :path => '/', :only => [] do
+    resources :users, :only => [:show, :index]
     get '/' => 'dashboard#index'
   end
 
