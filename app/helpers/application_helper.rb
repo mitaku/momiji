@@ -1,7 +1,6 @@
 module ApplicationHelper
-  def target_company
-    @target_company ||= Company.where_code_is(params[:company_id]).first
-  end
+  include ApplicationMethods
+
 
   def render_tabs(opts = {})
     opts[:direction] ||= 'above'
