@@ -1,6 +1,8 @@
 Momiji::Application.routes.draw do
 
 
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
   root :to => "welcome#index"
 
   devise_for :user, :path => '/', :path_names => {:sign_in => 'login', :sign_out => 'logout'}, :controllers => {:sessions => 'sessions'}
