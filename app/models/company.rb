@@ -8,7 +8,18 @@ class Company < ActiveRecord::Base
   validates :name, :presence => true
   validates :code, :uniqueness => true, :presence => true
 
+  belongs_to :management, :class_name => "Company"
+
   def to_param
     code.to_s
+  end
+
+  def self.inherited(subclass)
+    subclass.class_eval do
+      def to_param
+        id && id.to_s
+      end
+    end
+    super
   end
 end
