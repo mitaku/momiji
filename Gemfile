@@ -13,6 +13,7 @@ gem 'simple_form'
 gem 'cells'
 
 gem 'rails_admin'
+gem 'paper_trail'
 
 group :development do
   gem 'pry-rails'
