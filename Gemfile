@@ -12,6 +12,8 @@ gem 'devise'
 gem 'simple_form'
 gem 'cells'
 
+gem 'rails_admin'
+
 group :development do
   gem 'pry-rails'
 end
