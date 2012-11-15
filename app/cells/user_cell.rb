@@ -1,7 +1,5 @@
 class UserCell < Cell::Rails
-  helper ApplicationHelper
-  include Devise::Controllers::Helpers
-  helper_method :current_user
+  include CellsHelperMethods
 
   def index
     @users = User.all
