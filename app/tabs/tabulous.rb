@@ -59,6 +59,7 @@ Tabulous.setup do |config|
       #--------------------------------------------------------------------------------------------------------#
       [    :dashboard_tab    ,    'Home'          ,    company_path          ,    true        ,    true        ],
       [    :users_tab        ,    'Users'         ,    company_users_path    ,    true        ,    true        ],
+      [    :menu_tab         ,    'Menu'          ,    company_menu_path     ,    true        ,    true        ],
       #--------------------------------------------------------------------------------------------------------#
       #    TAB NAME          |    DISPLAY TEXT    |    PATH                  |    VISIBLE?    |    ENABLED?    #
       #--------------------------------------------------------------------------------------------------------#
@@ -87,6 +88,7 @@ Tabulous.setup do |config|
       [    :welcome      ,    :all_actions    ,    :welcome_tab      ],
       [    :users        ,    :all_actions    ,    :users_tab        ],
       [    :dashboard    ,    :all_actions    ,    :dashboard_tab    ],
+      [    :menu         ,    :all_actions    ,    :menu_tab    ],
       #--------------------------------------------------------------#
       #    CONTROLLER    |    ACTION          |    TAB               #
       #--------------------------------------------------------------#

@@ -1,6 +1,7 @@
 Momiji::Application.routes.draw do
 
 
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   root :to => "welcome#index"
@@ -9,6 +10,7 @@ Momiji::Application.routes.draw do
 
   resources :companies, :path => '/', :only => [] do
     resources :users, :only => [:show, :index]
+    get "/menu" => 'menu#index'
     get '/' => 'dashboard#index'
   end
 
