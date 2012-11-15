@@ -1,8 +1,9 @@
 class UserCell < Cell::Rails
   helper ApplicationHelper
+  include Devise::Controllers::Helpers
+  helper_method :current_user
 
   def index
-    p params
     @users = User.all
     render
   end
