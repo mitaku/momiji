@@ -2,7 +2,7 @@ class UserCell < Cell::Rails
   include CellsHelperMethods
 
   def index
-    @users = User.all
+    @users = target_company.users
     render
   end
 

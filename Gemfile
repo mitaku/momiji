@@ -12,6 +12,9 @@ gem 'devise'
 gem 'simple_form'
 gem 'cells'
 
+gem 'cancan'
+gem 'rolify'
+
 gem 'tabulous'
 
 gem 'rails_admin'

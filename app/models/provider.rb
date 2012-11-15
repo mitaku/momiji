@@ -1,3 +1,3 @@
 class Provider < Company
-  # attr_accessible :title, :body
+  has_many :customers, :dependent => :restrict, :foreign_key => :management_id, :class_name => 'Customer'
 end
