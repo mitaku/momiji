@@ -13,10 +13,26 @@ module ApplicationMethods
     return nil unless current_company
     return @target_company = current_company if code == current_company.code
 
-    @target_company ||= Company.where_code_is(code).first
+    @target_company ||= accessible_company(code)
 
     raise ActiveRecord::RecordNotFound if @target_company.nil?
 
     @target_company
+  end
+
+  private
+
+  def accessible_company(code)
+    case current_company
+    when Administration
+      Company.accessible_by(current_ability).where_code_is(code).first
+    when Provider
+      current_company.customers.accessible_by(current_ability).where_code_is(code).first ||
+      Provider.accessible_by(current_ability).where_code_is(code).first
+    when Customer
+      Customer.where_code_is(code).first
+    else
+      raise
+    end
   end
 end

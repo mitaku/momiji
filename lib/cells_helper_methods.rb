@@ -6,7 +6,9 @@ module CellsHelperMethods
 
   included do
     helper ApplicationHelper
+    include ApplicationMethods
     include Devise::Controllers::Helpers
+    include CanCan::ControllerAdditions
     helper_method :current_user
   end
 end
