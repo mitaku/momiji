@@ -5,6 +5,6 @@ class SessionsController < Devise::SessionsController
 
   private
   def after_sign_in_path_for(resource)
-    stored_location_for(resource) || company_path(resource.company.becomes(Company))
+    stored_location_for(resource) || company_path(resource.company.to_company)
   end
 end

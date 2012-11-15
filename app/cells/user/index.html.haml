@@ -1,5 +1,5 @@
 .search_form
-  = form_tag [target_company.becomes(Company), :users], :method => 'GET' do |f|
+  = form_tag [target_company.to_company, :users], :method => 'GET' do |f|
     %input.search-query{:placeholder => 'Search', :name => "q"}
 
 .users_area
@@ -14,5 +14,5 @@
           %i.icon-envelope
           %span= u.email
       .action_area
-        = link_to company_user_path(u.company, u) do
+        = link_to company_user_path(u.company.to_company, u) do
           %i.icon-book

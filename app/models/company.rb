@@ -14,6 +14,10 @@ class Company < ActiveRecord::Base
     code.to_s
   end
 
+  def to_company
+    becomes(Company)
+  end
+
   def self.inherited(subclass)
     subclass.class_eval do
       def to_param
