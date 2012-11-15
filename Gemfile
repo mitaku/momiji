@@ -12,6 +12,8 @@ gem 'devise'
 gem 'simple_form'
 gem 'cells'
 
+gem 'tabulous'
+
 gem 'rails_admin'
 gem 'paper_trail'
 
