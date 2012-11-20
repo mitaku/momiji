@@ -11,6 +11,8 @@ Momiji::Application.routes.draw do
     resources :users, :only => [:show, :index]
     get "/menu" => 'menu#index'
     get '/' => 'dashboard#index'
+
+    mount RailsAdmin::Engine => '/admin/data', :as => 'rails_admin'
   end
 
   # The priority is based upon order of creation:
@@ -70,5 +72,4 @@ Momiji::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
-  mount RailsAdmin::Engine => '/adm', :as => 'rails_admin'
 end
