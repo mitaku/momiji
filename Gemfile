@@ -20,8 +20,9 @@ gem 'tabulous'
 gem 'rails_admin'
 gem 'paper_trail'
 
-group :development do
+group :development, :test do
   gem 'pry-rails'
+  gem 'zeus'
 end
 
 # Gems used only for assets and not required
