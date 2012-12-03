@@ -1,7 +1,8 @@
 class Company < ActiveRecord::Base
   attr_accessible :name, :code
 
-  has_many :users
+  has_many :users, :dependent => :destroy
+  has_many :user_categories, :dependent => :destroy, :foreign_key => :owner_id
 
   scope :where_code_is, lambda { |code| where(:code => code).limit(1) }
 
