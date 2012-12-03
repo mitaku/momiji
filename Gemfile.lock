@@ -197,6 +197,7 @@ DEPENDENCIES
   font-awesome-sass-rails
   haml-rails
   jquery-rails
+  nested_form
   paper_trail
   pry-rails
   rails (= 3.2.9)

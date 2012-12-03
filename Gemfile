@@ -17,6 +17,8 @@ gem 'rolify'
 
 gem 'tabulous'
 
+gem 'nested_form'
+
 gem 'rails_admin'
 gem 'paper_trail'
 
