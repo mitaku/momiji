@@ -9,6 +9,7 @@ Momiji::Application.routes.draw do
 
   resources :companies, :path => '/', :only => [] do
     resources :users, :only => [:show, :index]
+    resources :user_categories
     get "/menu" => 'menu#index'
     get '/' => 'dashboard#index'
 

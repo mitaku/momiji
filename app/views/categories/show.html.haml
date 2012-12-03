@@ -1,6 +1,23 @@
-%p#notice= notice
+.two_pain
+  .right
+    .summary_area
+      .object-icon= image_tag "resource-48x48.png"
+      .info_area
+        .info.first
+          %i.icon-info-sign
+          %span= @category.name
+        .info.second
 
+.main_area
+  = render_tabs do |tabs|
+    - tabs.pane '1st' do
+      %dl
+        %dt name
+        %dd= @category.name
+        %dt item
+        %dd
+          %ul
+            - @category.items.each do |i|
+              %li= i.name
+      = link_to 'Edit', [:edit, target_company.to_company, @category]
 
-= link_to 'Edit', edit_category_path(@category)
-\|
-= link_to 'Back', categories_path
