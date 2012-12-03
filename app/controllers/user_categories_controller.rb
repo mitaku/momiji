@@ -1,0 +1,2 @@
+class UserCategoriesController < CategoriesController
+end
