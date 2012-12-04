@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   before_filter :set_category, :only => [:show, :edit, :update, :destroy]
 
   has_widgets do |root|
-    root << widget(:categories, :categories)
+    root << widget(:category_sidebar, :category_sidebar)
   end
 
   # GET /categories

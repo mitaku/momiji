@@ -1,21 +1,20 @@
 = widget_div do
   .panel.rounded
     .search_form
-      -# = form_tag url_for_event(:search, :company_id => target_company.code), :remote => true do |f|
       = form_for :search, :url => url_for_event(:search, :company_id => target_company.code), :remote => true do |f|
         = f.text_field :q, :placeholder => 'Search', :class => 'search-query'
 
     .objects_area
-      - @categories.each do |uc|
+      - @objects.each do |obj|
         .object_area.line-bottom
           .image_area= image_tag "resource-48x48.png"
           .info_area
             .info.first
               %i.icon-user
-              %span= uc.name
+              %span= obj.name
             .info.second
           .action_area
-            = link_to company_user_category_path(uc.owner.to_company, uc) do
+            = link_to [target_company.to_company, obj] do
               %i.icon-book
 
-    = paginate @categories, :remote => true, :theme => 'sidebar'
+    = paginate @objects, :remote => true, :theme => 'sidebar'
