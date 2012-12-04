@@ -11,13 +11,14 @@
 .main_area
   = render_tabs do |tabs|
     - tabs.pane '1st' do
-      %dl
-        %dt name
-        %dd= @category.name
-        %dt item
-        %dd
-          %ul
-            - @category.items.each do |i|
-              %li= i.name
-      = link_to 'Edit', [:edit, target_company.to_company, @category]
+      .panel
+        %dl
+          %dt name
+          %dd= @category.name
+          %dt item
+          %dd
+            %ul
+              - @category.items.each do |i|
+                %li= i.name
+        = link_to 'Edit', [:edit, target_company.to_company, @category]
 
