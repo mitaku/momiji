@@ -10,7 +10,10 @@ gem 'sqlite3'
 gem 'haml-rails'
 gem 'devise'
 gem 'simple_form'
-gem 'cells'
+gem 'apotomo'
+
+gem 'has_scope'
+gem 'kaminari'
 
 gem 'cancan'
 gem 'rolify'
