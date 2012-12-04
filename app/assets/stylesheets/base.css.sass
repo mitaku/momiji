@@ -64,13 +64,44 @@ body
     clear: both
     padding-top: 20px
 
+
   .panel
     margin: 1px
-    padding-left: 1em
-    padding-bottom: 1em
+    padding: 1em
     background-color: white
     border: 1px solid #CCC
     box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.4)
 
     &:hover
       border: 1px solid #999
+
+  .rounded
+    border-radius: 10px
+
+  .two_pain
+    .right
+      .summary_area
+        height: 50px
+        padding: 3px 1px
+        &:after
+          clear: both
+      .object-icon
+        width: 52px
+        float: left
+      .info_area
+        float: left
+        .info
+          text-overflow: ellipsis
+          overflow: hidden
+          white-space: nowrap
+        .first
+          height: 24px
+          padding: 1px
+        .second
+          height: 24px
+          padding: 1px
+
+  .tabbable
+    .tab-content
+      padding: 0px 5px
+
