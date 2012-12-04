@@ -1,7 +1,13 @@
 class CategoriesController < ApplicationController
+  include Apotomo::Rails::ControllerMethods
+
   before_filter :authenticate_user!
   before_filter :set_categories, :only => [:index]
   before_filter :set_category, :only => [:show, :edit, :update, :destroy]
+
+  has_widgets do |root|
+    root << widget(:categories, :categories)
+  end
 
   # GET /categories
   # GET /categories.json

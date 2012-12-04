@@ -1,0 +1,2 @@
+%li
+  = link_to_unless current_page.last?, raw(t 'views.pagination.next'), search_paginate_widget_url(current_page + 1), :rel => 'next', :remote => remote
