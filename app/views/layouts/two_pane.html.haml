@@ -21,7 +21,7 @@
       #main.container
         .row
           .span3
-            = render_widget :sidebar, :show, params[:search]
+            = render_widget :sidebar, :display, params[:search]
             = yield :sidebar
           .span9
             = yield

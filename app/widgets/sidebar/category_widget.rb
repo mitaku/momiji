@@ -1,4 +1,4 @@
-class CategorySidebarWidget < SidebarWidget
+class Sidebar::CategoryWidget < Sidebar::BaseWidget
   set_pagination
 
   has_scope :q do |controller, scope, value|

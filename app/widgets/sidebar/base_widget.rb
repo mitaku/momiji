@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-class SidebarWidget < Apotomo::Widget
+class Sidebar::BaseWidget < Apotomo::Widget
   DEFAULT_PER = 10
 
   include CellsHelperMethods
 
   responds_to_event :search
 
-  def show(_params = {})
+  def display(_params = {})
     _params ||= {}
     @search_params ||= {}
 
@@ -19,7 +19,11 @@ class SidebarWidget < Apotomo::Widget
 
   def search(event)
     @search_params = event.data.to_hash.symbolize_keys[:search] || {}
-    update :state => :show
+    update :state => :display
+  end
+
+  def list(objects)
+    render :locals => {:objects => objects}
   end
 
   private

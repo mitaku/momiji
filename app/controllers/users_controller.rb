@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   layout 'two_pane'
 
   has_widgets do |root|
-    root << widget(:user_sidebar, :sidebar)
+    root << widget('sidebar/user', :sidebar)
   end
 
   def index
