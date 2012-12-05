@@ -1,2 +1,14 @@
-%h1 Menu#index
-%p Find me in app/views/menu/index.html.haml
+.row
+  .span4
+    .panel.rounded
+      .header.rounded-top
+        %h4 User
+      .content
+        .menu_item
+          = link_to [target_company.to_company, :users] do
+            = image_tag "resource-48x48.png"
+            = "User"
+        .menu_item
+          = link_to [target_company.to_company, :user_categories] do
+            = image_tag "resource-48x48.png"
+            = "UserCategory"
