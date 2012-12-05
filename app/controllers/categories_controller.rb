@@ -1,12 +1,14 @@
 class CategoriesController < ApplicationController
   include Apotomo::Rails::ControllerMethods
 
+  layout 'two_pane'
+
   before_filter :authenticate_user!
   before_filter :set_categories, :only => [:index]
   before_filter :set_category, :only => [:show, :edit, :update, :destroy]
 
   has_widgets do |root|
-    root << widget(:category_sidebar, :category_sidebar)
+    root << widget(:category_sidebar, :sidebar)
   end
 
   # GET /categories

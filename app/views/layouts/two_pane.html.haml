@@ -19,7 +19,12 @@
           = render 'layouts/navigation'
     #wrap
       #main.container
-        = yield
+        .row
+          .span3
+            = render_widget :sidebar, :show, params[:search]
+            = yield :sidebar
+          .span9
+            = yield
     .footer.line-top
       %footer
         %p &copy; Company 2012
