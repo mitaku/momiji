@@ -10,3 +10,13 @@
   .span4
     = render_widget :password, :display, @user
 
+  .span1
+
+.row
+  .span4
+    = simple_form_for([target_company.to_company, @user]) do |f|
+      .form-inputs
+        = f.fields_for :user_category
+        = f.association :category_items, :as => :select
+
+      = f.button :submit

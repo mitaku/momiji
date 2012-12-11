@@ -10,8 +10,12 @@ class User < ActiveRecord::Base
 
   belongs_to :company
 
+  has_many :category_items, :through => :category_item_users, :include => :category
+  has_many :category_item_users, :foreign_key => :member_id, :dependent => :destroy
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
   validates :name, :presence => true
+
 end
