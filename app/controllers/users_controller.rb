@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   has_widgets do |root|
     root << widget('sidebar/user', :sidebar)
+    root << widget('user/password', :password)
   end
 
   def index
