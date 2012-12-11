@@ -34,6 +34,10 @@ GEM
       onfire (~> 0.2.0)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    better_errors (0.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.7.0)
+    binding_of_caller (0.6.8)
     bootstrap-sass (2.1.1.0)
     builder (3.0.4)
     cancan (1.6.8)
@@ -196,6 +200,8 @@ PLATFORMS
 
 DEPENDENCIES
   apotomo
+  better_errors
+  binding_of_caller
   bootstrap-sass (~> 2.1.1.0)
   cancan
   coffee-rails (~> 3.2.1)
