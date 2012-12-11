@@ -8,7 +8,7 @@ Momiji::Application.routes.draw do
   devise_for :user, :path => '/', :path_names => {:sign_in => 'login', :sign_out => 'logout'}, :controllers => {:sessions => 'sessions'}
 
   resources :companies, :path => '/', :only => [] do
-    resources :users, :only => [:show, :index]
+    resources :users
     resources :user_categories
     get "/menu" => 'menu#index'
     get '/' => 'dashboard#index'

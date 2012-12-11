@@ -1,0 +1,8 @@
+= simple_form_for([target_company.to_company, @user]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :email
+
+  = f.button :submit
