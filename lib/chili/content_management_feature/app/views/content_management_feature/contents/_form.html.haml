@@ -1,10 +1,9 @@
-= simple_form_for(@content) do |f|
+= simple_form_for(@content, :html => {:maltipart => true}) do |f|
   = f.error_notification
 
   .form-inputs
     = f.input :name
-    = f.input :md5
-    = f.association :company
+    = f.input :data, :as => :file
 
   .form-actions
     = f.button :submit
