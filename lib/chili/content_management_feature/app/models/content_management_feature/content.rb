@@ -1,6 +1,7 @@
 module ContentManagementFeature
   class Content < ActiveRecord::Base
-    belongs_to :company
-    attr_accessible :md5, :name
+    belongs_to :company, :class_name => "::Company"
+    attr_accessible :name, :data
+    mount_uploader :data, ContentUploader
   end
 end
