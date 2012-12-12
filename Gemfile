@@ -72,3 +72,6 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+group :chili do
+  gem 'content_management_feature', path: 'lib/chili/content_management_feature'
+end
