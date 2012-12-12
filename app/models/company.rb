@@ -4,6 +4,8 @@ class Company < ActiveRecord::Base
   has_many :users, :dependent => :destroy
   has_many :user_categories, :dependent => :destroy, :foreign_key => :owner_id, :include => :items
 
+  has_many :contents, :dependent => :destroy, :class_name => "ContentManagementFeature::Content"
+
   scope :where_code_is, lambda { |code| where(:code => code).limit(1) }
 
   validates :name, :presence => true
