@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 3.2.9"
   s.add_dependency 'chili', '~> 3.0'
+  s.add_dependency 'carrierwave'
+  s.add_dependency 'fog'
 
   s.add_development_dependency "sqlite3"
 end
