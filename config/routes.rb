@@ -13,6 +13,7 @@ Momiji::Application.routes.draw do
     get "/menu" => 'menu#index'
     get '/' => 'dashboard#index'
 
+    mount ContentManagementFeature::Engine => '/mcm', :as => 'content_management_feature'
     mount RailsAdmin::Engine => '/admin/data', :as => 'rails_admin'
   end
 
