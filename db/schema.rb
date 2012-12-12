@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212055423) do
+ActiveRecord::Schema.define(:version => 20121212072413) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -67,6 +67,16 @@ ActiveRecord::Schema.define(:version => 20121212055423) do
   end
 
   add_index "content_management_feature_contents", ["company_id"], :name => "index_content_management_feature_contents_on_company_id"
+
+  create_table "content_management_feature_directories", :force => true do |t|
+    t.string   "name"
+    t.string   "ancestry"
+    t.integer  "company_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "content_management_feature_directories", ["company_id", "ancestry"], :name => "index_content_directories_company_id_and_ancestry"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
