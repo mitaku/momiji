@@ -16,10 +16,11 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_dependency "rails", "~> 3.2.9"
-  # s.add_dependency "jquery-rails"
   s.add_dependency "jquery-rails"
   s.add_dependency "haml-rails"
   s.add_dependency "coffee-rails"
+  s.add_dependency "carrierwave"
+  s.add_dependency "ancestry"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "tapp"
@@ -35,7 +36,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'guard-spork'
   s.add_development_dependency 'growl'
   s.add_development_dependency 'capybara'
-  s.add_development_dependency 'capybara-webkit'
+  # s.add_development_dependency 'capybara-webkit'
   s.add_development_dependency 'timecop'
   s.add_development_dependency 'haml-rails'
 end
