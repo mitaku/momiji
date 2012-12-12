@@ -1,0 +1,23 @@
+%h1 Listing contents
+
+%table
+  %tr
+    %th Name
+    %th Md5
+    %th Company
+    %th
+    %th
+    %th
+
+  - @contents.each do |content|
+    %tr
+      %td= content.name
+      %td= content.md5
+      %td= content.company
+      %td= link_to 'Show', content
+      %td= link_to 'Edit', edit_content_path(content)
+      %td= link_to 'Destroy', content, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Content', new_content_path
