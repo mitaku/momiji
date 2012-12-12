@@ -1,5 +1,5 @@
 module Chocoholic
   class Content < ActiveRecord::Base
-    attr_accessible :ancestry, :company_id, :data, :name, :owner_id, :type
+    attr_accessible :name, :ancestry
   end
 end
