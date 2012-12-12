@@ -1,0 +1,86 @@
+
+%ul.breadcrumb
+  %li
+    %i.icon-folder-open
+  - @directory.ancestors.each do |a|
+    %li
+      = link_to a.name, {:id => a.id }
+      %span.divider= "/"
+  %li.active= @directory.name
+
+.row
+  .span3
+    .panel.rounded
+      .content
+        %ul.nav.nav-list
+          %li.nav-header 操作
+          %li
+            = link_to({:action => :show}) do
+              %i.icon-info-sign
+              = "詳細"
+          %li
+            = link_to "#mkdir_dialog", {:'data-toggle' => "modal"} do
+              %i.icon-plus-sign
+              = "フォルダの追加"
+          %li
+            = link_to "#upload_dialog", {:'data-toggle' => "modal"} do
+              %i.icon-upload
+              = "アップロード"
+          %li.divider
+          %li
+            = link_to "#" do
+              %i.icon-trash
+              = "削除"
+
+  .span9
+    .panel.rounded
+      .header.rounded-top
+        %h4
+          %i.icon-folder-open
+          = @directory.name
+
+      .content
+        %table.table.table-striped
+          %thead
+            %td type
+            %td name
+            %td modified
+          %tbody
+            - @children.each do |content|
+              %tr
+                %td
+                  %i.icon-folder-close/
+                %td= link_to content.name, {:id => content.id}
+                %td= content.updated_at
+            - @directory.contents.each do |content|
+              %tr
+                %td
+                  %i.icon-file/
+                %td= link_to content.name, directory_content_path(@directory, content)
+                %td= content.updated_at
+
+
+#mkdir_dialog.modal.hide.fade(tabindex = "-1" role = "dialog" aria-lablledby="mkdirModalLabel" aria-hidden="true")
+  .modal-header
+    %button.close(type="button" data-dismiss="modal" aria-hidden="true") ×
+    %h3#mkdirModalLabel フォルダの追加
+  .modal-body
+    = simple_form_for @directory.children.new, :url => {:action => "mkdir"} do |f|
+      = f.input :name
+      = f.button :submit
+  .modal-footer
+    %button.btn(data-dismiss="modal" aria-hidden="true") Close
+    %button.btn.btn-primary Save changes
+
+#upload_dialog.modal.hide.fade(tabindex = "-1" role = "dialog" aria-lablledby="uploadModalLabel" aria-hidden="true")
+  .modal-header
+    %button.close(type="button" data-dismiss="modal" aria-hidden="true") ×
+    %h3#uploadModalLabel アップロード
+  .modal-body
+    = simple_form_for [@directory, @directory.contents.new] do |f|
+      = f.input :name
+      = f.input :data, :as => :file
+      = f.button :submit
+  .modal-footer
+    %button.btn(data-dismiss="modal" aria-hidden="true") Close
+    %button.btn.btn-primary Save changes

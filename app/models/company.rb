@@ -5,6 +5,7 @@ class Company < ActiveRecord::Base
   has_many :user_categories, :dependent => :destroy, :foreign_key => :owner_id, :include => :items
 
   has_many :contents, :dependent => :destroy, :class_name => "ContentManagementFeature::Content"
+  has_many :content_directories, :dependent => :destroy, :class_name => "ContentManagementFeature::Directory"
 
   scope :where_code_is, lambda { |code| where(:code => code).limit(1) }
 
