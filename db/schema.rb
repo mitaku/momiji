@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212072413) do
+ActiveRecord::Schema.define(:version => 20121212111031) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -64,9 +64,11 @@ ActiveRecord::Schema.define(:version => 20121212072413) do
     t.integer  "company_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "directory_id"
   end
 
   add_index "content_management_feature_contents", ["company_id"], :name => "index_content_management_feature_contents_on_company_id"
+  add_index "content_management_feature_contents", ["directory_id"], :name => "index_content_management_feature_contents_on_directory_id"
 
   create_table "content_management_feature_directories", :force => true do |t|
     t.string   "name"
