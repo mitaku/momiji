@@ -16,7 +16,7 @@
   .span4
     = simple_form_for([target_company.to_company, @user]) do |f|
       .form-inputs
-        = f.fields_for :user_category
-        = f.association :category_items, :as => :select
-
+        - target_company.user_categories.order(:id).each do |category|
+          = f.fields_for :category_item_users, @user.category_item_membership_of(category) do |mf|
+            = mf.association :category_item, :as => :select, :collection => category.items
       = f.button :submit
