@@ -1,0 +1,10 @@
+= widget_div do
+  .panel.rounded
+    .header.rounded-top
+      %h4 Password
+    .content
+      = simple_form_for @user, :url => url_for_event(:submit, :company_id => target_company.code), :remote => true, :as => :user_password_widget do |f|
+        = f.input :id, :as => :hidden
+        = f.input :password
+        = f.input :password_confirmation
+        = f.button :submit

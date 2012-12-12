@@ -1,0 +1,16 @@
+%h1 Listing categories
+
+%table.table
+  %tr
+    %th name
+    %th
+    %th
+    %th
+
+  - @categories.each do |category|
+    %tr
+      %td= category.name
+      %td= link_to 'Show', [target_company.to_company, category]
+      %td= link_to 'Edit', [:edit, target_company.to_company, category]
+      %td= link_to 'Destroy', [target_company.to_company, category], method: :delete, data: { confirm: 'Are you sure?' }
+

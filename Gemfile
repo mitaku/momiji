@@ -10,15 +10,25 @@ gem 'sqlite3'
 gem 'haml-rails'
 gem 'devise'
 gem 'simple_form'
-gem 'cells'
+gem 'apotomo'
+
+gem 'has_scope'
+gem 'kaminari'
 
 gem 'cancan'
 gem 'rolify'
 
 gem 'tabulous'
 
+gem 'nested_form'
+
 gem 'rails_admin'
 gem 'paper_trail'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
 
 group :development, :test do
   gem 'pry-rails'

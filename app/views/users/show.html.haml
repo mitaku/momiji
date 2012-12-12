@@ -1,4 +1,4 @@
-.two_pain
+.two_pane
   .right
     .summary_area
       .object-icon= image_tag "resource-48x48.png"
@@ -13,7 +13,15 @@
 .main_area
   = render_tabs do |tabs|
     - tabs.pane '1st' do
-      %h1 1st
+      .panel.rounded
+        .content
+          %dl
+            %dt name
+            %dd= @user.name
+            %dt email
+            %dd= @user.email
+
+          -# = link_to 'Edit', [:edit, target_company.to_company, @user]
     - tabs.pane '2nd' do
       %h1 2nd
 

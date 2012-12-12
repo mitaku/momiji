@@ -1,0 +1,18 @@
+= simple_nested_form_for([target_company.to_company, @category], :as => :category) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+
+  %table.table
+    = f.fields_for :items, wrapper: false do |item_form|
+      %tr.fields
+        %td
+          = item_form.text_field :name
+          = item_form.hidden_field :id
+        %td= item_form.link_to_remove '', {:class => 'icon-remove-sign'}
+    %tr
+      %td
+      %td= f.link_to_add '', :items, {:class => 'icon-plus-sign'}
+
+  = f.button :submit

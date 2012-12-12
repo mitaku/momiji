@@ -1,0 +1,22 @@
+%h1 Editing User
+
+.row
+  .span4
+    .panel.rounded
+      .content
+        = render 'form'
+        = link_to 'Show', [target_company.to_company, @user]
+
+  .span4
+    = render_widget :password, :display, @user
+
+  .span1
+
+.row
+  .span4
+    = simple_form_for([target_company.to_company, @user]) do |f|
+      .form-inputs
+        - target_company.user_categories.order(:id).each do |category|
+          = f.fields_for :category_item_users, @user.category_item_membership_of(category) do |mf|
+            = mf.association :category_item, :as => :select, :collection => category.items
+      = f.button :submit

@@ -1,0 +1,11 @@
+= widget_div do
+  .panel.rounded
+    .content
+      .search_form
+        = form_for :search, :url => url_for_event(:search, :company_id => target_company.code), :remote => true do |f|
+          = f.text_field :q, :placeholder => 'Search', :class => 'search-query span2'
+
+      .objects_area
+        = render({:state => :list}, @objects)
+
+      = paginate @objects, :remote => true, :theme => 'sidebar'
