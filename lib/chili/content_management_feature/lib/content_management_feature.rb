@@ -1,6 +1,7 @@
 require "chili"
 require "content_management_feature/engine"
 require "carrierwave"
+require "ancestry"
 
 module ContentManagementFeature
   extend Chili::Base
