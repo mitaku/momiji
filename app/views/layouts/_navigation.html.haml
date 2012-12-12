@@ -1,4 +1,4 @@
-= link_to 'Momiji', root_path, :class => 'brand'
+= link_to 'Momiji', main_app.root_path, :class => 'brand'
 %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
   %span.icon-bar
   %span.icon-bar
@@ -8,6 +8,6 @@
     = tabs
   %ul.nav.pull-right
     - if user_signed_in?
-      %li= link_to 'Logout', destroy_user_session_path, :method => 'delete'
+      %li= link_to 'Logout', main_app.destroy_user_session_path, :method => 'delete'
     - else
-      %li= link_to 'Login', new_user_session_path
+      %li= link_to 'Login', main_app.new_user_session_path
