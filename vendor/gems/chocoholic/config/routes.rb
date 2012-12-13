@@ -7,7 +7,9 @@ Chocoholic::Engine.routes.draw do
     member do
       post "mkdir"
       post "upload"
+
     end
+    resources :handouts, :only => [:show, :edit, :update, :create]
   end
 
 end
