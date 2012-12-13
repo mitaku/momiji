@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121211055450) do
+ActiveRecord::Schema.define(:version => 20121213011502) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -42,6 +42,21 @@ ActiveRecord::Schema.define(:version => 20121211055450) do
   end
 
   add_index "category_items", ["category_id"], :name => "index_category_items_on_category_id"
+
+  create_table "chocoholic_contents", :force => true do |t|
+    t.string   "name"
+    t.string   "type"
+    t.integer  "company_id"
+    t.integer  "owner_id"
+    t.string   "ancestry"
+    t.string   "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "chocoholic_contents", ["ancestry"], :name => "index_chocoholic_contents_on_ancestry"
+  add_index "chocoholic_contents", ["company_id", "owner_id"], :name => "index_chocoholic_contents_on_company_id_and_owner_id"
+  add_index "chocoholic_contents", ["type", "company_id"], :name => "index_chocoholic_contents_on_type_and_company_id"
 
   create_table "companies", :force => true do |t|
     t.string   "name"

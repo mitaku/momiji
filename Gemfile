@@ -25,6 +25,8 @@ gem 'nested_form'
 gem 'rails_admin'
 gem 'paper_trail'
 
+gem 'chocoholic', :path => 'vendor/gems/chocoholic'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
