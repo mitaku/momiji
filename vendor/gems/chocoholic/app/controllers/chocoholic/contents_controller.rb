@@ -26,18 +26,5 @@ module Chocoholic
     def show
       @directory = target_company.directories.find(params[:id])
     end
-
-    def upload
-      @directory = target_company.directories.find(params[:id])
-      @content = @directory.build_handout(params[:content])
-
-
-      respond_to do |format|
-        if @content.save
-          format.html { redirect_to content_path(@directory), notice: 'Content was successfully created.' }
-          format.json { render json: @content, status: :created, location: @content }
-        end
-      end
-    end
   end
 end
