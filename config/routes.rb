@@ -14,6 +14,7 @@ Momiji::Application.routes.draw do
     get '/' => 'dashboard#index'
 
     mount RailsAdmin::Engine => '/admin/data', :as => 'rails_admin'
+    mount Chocoholic::Engine => '/mcm', :as => 'chocoholic'
   end
 
   # The priority is based upon order of creation:
