@@ -4,6 +4,10 @@ Chocoholic::Engine.routes.draw do
     collection do
       get "root"
     end
+    member do
+      post "mkdir"
+      post "upload"
+    end
   end
 
 end

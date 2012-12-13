@@ -2,6 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body.contents
+  .chocoholic-contents
+    width: 100%
+    display: table
+    border-collapse: collapse
+
+    .chocoholic-content
+      display: table-row
+      border: 1px solid #CCC
+      background-color: white
+      &:hover
+        border: 1px solid #999
+
+      .icon
+        padding-left: 1em
+        width: 5%
+        display: table-cell
+        vertical-align: middle
+      .name
+        width: 60%
+        display: table-cell
+        vertical-align: middle
+      .date
+        width: 20%
+        display: table-cell
+        vertical-align: middle
+      .action
+        width: 15%
+        display: table-cell
+        vertical-align: middle
+
 body.users
   .users_area
     .user_area
