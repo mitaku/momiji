@@ -1,0 +1,76 @@
+%ul.breadcrumb
+  %li
+    %i.icon-folder-open
+  - @handout.ancestors.each do |a|
+    %li
+      = link_to a.name, content_path(a)
+      %span.divider= "/"
+  %li.active= @handout.name
+
+.row
+  .span6
+    .panel.rounded
+      .header.rounded-top
+        %h4
+          %i.icon-info-sign
+          詳細
+      .content
+        .info
+          = image_tag 'resource-48x48.png'
+          = link_to @handout.data.to_s, :class => 'btn btn-info' do
+            %i.icon-download
+            = "ダウンロード"
+        %dl
+          %dt ファイルタイプ
+          %dd XXXXX
+          %dt ファイルサイズ
+          %dd XXXXX byte
+          %dt MD5
+          %dd XXXXX
+          %dt アップロード日時
+          %dd= @handout.created_at.strftime("%Y/%m/%d %H:%M")
+          %dt 更新日時
+          %dd= @handout.updated_at.strftime("%Y/%m/%d %H:%M")
+  .span6
+    .panel.rounded
+      .header.rounded-top
+        %h4
+          %i.icon-cog
+          管理
+      .content
+        %dl
+          %dt 表示名
+          %dd= @handout.name
+          %dt ステータス
+          %dd 公開中
+          %dt タグ
+          %dd
+            %span.label README
+            %span.label 納品物
+            %span.label 設計書
+            %span.label XXX社向け
+        .action
+          = link_to '編集', {:action => :edit}, :class => 'btn btn-info'
+          = link_to '#', :class => 'btn btn-danger' do
+            %i.icon-trash
+            = "削除"
+
+.row
+  .span12
+    .history
+      .panel.rounded
+        .header.rounded-top
+          %h4
+            %i.icon-book
+            履歴
+        .content
+          %table.table.table-striped
+            %tbody
+              %tr
+                %td(style="width: 130px") 2012/12/13 11:20
+                %td YYYYがダウンロードしました。
+              %tr
+                %td 2012/12/13 09:54
+                %td XXXXがアップロードしました。
+
+

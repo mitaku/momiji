@@ -1,0 +1,53 @@
+%ul.breadcrumb
+  %li
+    %i.icon-folder-open
+  - @handout.ancestors.each do |a|
+    %li
+      = link_to a.name, content_path(a)
+      %span.divider= "/"
+  %li.active= @handout.name
+
+.information
+  .panel.rounded
+    .header.rounded-top
+      %h4
+        %i.icon-info-sign
+        詳細
+    .content
+      %dl
+        %dt ファイル名
+        %dd
+        %dt ファイルタイプ
+        %dd
+        %dt ファイルサイズ
+        %dd
+        %dt タグ
+        %dd
+        %dt 更新日時
+        %dd
+        %dt 登録日時
+        %dd
+      .action
+        = link_to '#', :class => 'btn' do
+          %i.icon-download
+          = "ダウンロード"
+        = link_to 'キャンセル', {:action => :show}, :class => 'btn'
+
+
+
+
+.history
+  .panel.rounded
+    .header.rounded-top
+      %h4 履歴
+    .content
+      %table.table.table-striped
+        %tbody
+          %tr
+            %td(style="width: 130px") 2012/12/13 11:20
+            %td YYYYがダウンロードしました。
+          %tr
+            %td 2012/12/13 09:54
+            %td XXXXがアップロードしました。
+
+
