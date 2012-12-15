@@ -1,3 +1,4 @@
+require "apotomo"
 require "chocoholic/engine"
 require "carrierwave"
 require "ancestry"
