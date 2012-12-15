@@ -1,6 +1,10 @@
 module Chocoholic
   class Directory < Content
 
+
+    #FIXME
+    validates :depth, :numericality => {:only_integer => true, :less_than_or_equal_to => 3}, :on => :create
+
     def handouts
       children.where(:type => 'Chocoholic::Handout')
     end
@@ -13,7 +17,7 @@ module Chocoholic
     end
 
     def create_handout(attr = {})
-      h = build_handout(attr).save
+      build_handout(attr).save
     end
   end
 end
