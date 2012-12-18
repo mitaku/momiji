@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212153002) do
+ActiveRecord::Schema.define(:version => 20121217150638) do
 
   create_table "chocoholic_contents", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20121212153002) do
     t.string   "data"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "file_size"
   end
 
   add_index "chocoholic_contents", ["ancestry"], :name => "index_chocoholic_contents_on_ancestry"
