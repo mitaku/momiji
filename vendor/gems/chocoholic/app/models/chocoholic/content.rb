@@ -4,7 +4,7 @@ module Chocoholic
     belongs_to :company, :class_name => "::Company"
     has_ancestry
 
-    validates :name, :uniqueness => {:scope => :ancestry}, :presence => true
+    validates :name, :uniqueness => {:scope => [:company_id, :ancestry]}, :presence => true
 
     def icon_path
       "chocoholic/filetype/#{file_type}.png"

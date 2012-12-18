@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217150638) do
+ActiveRecord::Schema.define(:version => 20121218043805) do
 
   create_table "chocoholic_contents", :force => true do |t|
     t.string   "name"
@@ -28,5 +28,18 @@ ActiveRecord::Schema.define(:version => 20121217150638) do
   add_index "chocoholic_contents", ["ancestry"], :name => "index_chocoholic_contents_on_ancestry"
   add_index "chocoholic_contents", ["company_id", "owner_id"], :name => "index_chocoholic_contents_on_company_id_and_owner_id"
   add_index "chocoholic_contents", ["type", "company_id"], :name => "index_chocoholic_contents_on_type_and_company_id"
+
+  create_table "chocoholic_permissions", :force => true do |t|
+    t.string   "resource_type"
+    t.integer  "content_id"
+    t.integer  "resource_id"
+    t.boolean  "writable",      :default => false, :null => false
+    t.boolean  "readonly",      :default => false, :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "chocoholic_permissions", ["content_id"], :name => "index_chocoholic_permissions_on_content_id"
+  add_index "chocoholic_permissions", ["resource_id", "resource_type"], :name => "index_chocoholic_permissions_on_resource_id_and_resource_type"
 
 end
