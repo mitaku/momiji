@@ -1,0 +1,16 @@
+= widget_div do
+  :javascript
+    $(document).ready(function() {
+      var input = $("##{widget_id}-field");
+      input.typeahead({
+        source: function (query, process) {
+          return $.getJSON(
+            input.attr('data-load-event-url'),
+            { query: query },
+            function (data) {
+              return process(data);
+            });
+          }
+      });
+    });
+  = text_field_tag "#{widget_id}-field", "", 'data-load-event-url' => url_for_event(:typing, :company_id => target_company.code)

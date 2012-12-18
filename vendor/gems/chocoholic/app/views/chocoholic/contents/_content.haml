@@ -1,34 +1,31 @@
 .chocoholic-content
-  - if content.is_a?(Chocoholic::Directory)
-    .icon
-      %i.icon-folder-close
-    .name= link_to content.name, {:id => content.id, :action => :show}
-    .action
+  - if content.directory?
+    .icon= image_tag content.icon_path
+    .info
+      = link_to content.name, {:id => content.id, :action => :show}
+    .type
+      = "フォルダ"
+    .other_info
       .detail
-        = link_to "#info" do
-          %i.icon-info-sign
-          詳細
-    .date
-      .created_at
-        登録:
-        = content.created_at.strftime("%Y/%m/%d %H:%M")
-      .updated_at
-        更新:
-        = content.updated_at.strftime("%Y/%m/%d %H:%M")
+        = link_to edit_content_path(content) do
+          %i.icon-cog
+          編集
 
   - else
-    .icon
-      %i.icon-file
-    .name= link_to content.name, content_handout_path(content.parent, content)
-    .action
-      .download
-        = link_to "#DL" do
-          %i.icon-download
-          ダウンロード
-    .date
-      .created_at
-        登録:
-        = content.created_at.strftime("%Y/%m/%d %H:%M")
+    .icon= image_tag content.icon_path
+    .info
+      = link_to content.name, content.data.to_s
+      .visible-desktop
+        %span.label カスタマーエンジニア向け
+        %span.label チェック済み
+    .type
+      = "ファイル"
+      .size
+        %span= number_to_human_size(content.file_size || 0, :precision => 1)
+    .other_info
       .updated_at
-        更新:
         = content.updated_at.strftime("%Y/%m/%d %H:%M")
+      .detail
+        = link_to content_handout_path(content.parent, content) do
+          %i.icon-info-sign
+          詳細

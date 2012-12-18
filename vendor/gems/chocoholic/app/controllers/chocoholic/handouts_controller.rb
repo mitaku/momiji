@@ -4,7 +4,7 @@ module Chocoholic
   class HandoutsController < ApplicationController
     before_filter :authenticate_user!
     before_filter :set_directory
-    before_filter :set_handout, :only => [:show, :edit, :update]
+    before_filter :set_handout, :only => [:show, :edit, :update, :destroy]
 
     def show
     end
@@ -13,6 +13,15 @@ module Chocoholic
     end
 
     def update
+      respond_to do |format|
+        if @handout.update_attributes(params[:handout])
+          format.html { redirect_to content_path(@directory), notice: 'Handout was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @handout.errors, status: :unprocessable_entity }
+        end
+      end
     end
 
     def create
@@ -22,7 +31,18 @@ module Chocoholic
         if @content.save
           format.html { redirect_to content_path(@directory), notice: 'Handout was successfully created.' }
           format.json { render json: @content, status: :created, location: @content }
+        else
+          raise
         end
+      end
+    end
+
+    def destroy
+      @handout.destroy
+
+      respond_to do |format|
+        format.html { redirect_to content_path(@directory) }
+        format.json { head :no_content }
       end
     end
 

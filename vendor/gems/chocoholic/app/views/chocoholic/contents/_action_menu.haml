@@ -1,0 +1,22 @@
+.content
+  %ul.nav.nav-list
+    %li.nav-header 操作
+    %li
+      = link_to edit_content_path(directory) do
+        %i.icon-cog
+        = "編集"
+    - if directory.can_create_directory?
+      %li
+        = link_to "#mkdir_dialog", {:'data-toggle' => "modal"} do
+          %i.icon-plus-sign
+          = "フォルダの追加"
+    %li
+      = link_to "#upload_dialog", {:'data-toggle' => "modal"} do
+        %i.icon-upload
+        = "アップロード"
+    - unless directory.is_root?
+      %li.divider
+      %li
+        = link_to({:action => :destroy}, :method => :delete, :confirm => "Are you sure?") do
+          %i.icon-trash
+          = "削除"

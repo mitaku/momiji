@@ -1,3 +1,6 @@
+= content_for :css do
+  = stylesheet_link_tag "chocoholic/application"
+
 %ul.breadcrumb
   %li
     %i.icon-folder-open
@@ -9,27 +12,15 @@
 
 .row
   .span3
-    .panel.rounded
+    .panel.rounded.visible-desktop
+      = render 'action_menu', :directory => @directory
+
+    .panel.rounded.visible-desktop
       .content
         %ul.nav.nav-list
-          %li.nav-header 操作
-          %li
-            = link_to("#") do
-              %i.icon-info-sign
-              = "詳細"
-          %li
-            = link_to "#mkdir_dialog", {:'data-toggle' => "modal"} do
-              %i.icon-plus-sign
-              = "フォルダの追加"
-          %li
-            = link_to "#upload_dialog", {:'data-toggle' => "modal"} do
-              %i.icon-upload
-              = "アップロード"
-          %li.divider
-          %li
-            = link_to "#" do
-              %i.icon-trash
-              = "削除"
+          %li.nav-header アクセス制御
+          %li= "三浦 彩"
+          %li= "ユーザー分類:部署 > 営業"
 
   .span9
     .panel.rounded
@@ -58,6 +49,5 @@
     %h3#uploadModalLabel アップロード
   .modal-body
     = simple_form_for @directory.children.new, :url => content_handouts_path(@directory) do |f|
-      = f.input :name, :label => "ファイル名"
       = f.input :data, :as => :file, :label => "アップロードするファイルの選択"
       %button.btn.btn-primary(type="submit") アップロード

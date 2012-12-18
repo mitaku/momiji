@@ -1,0 +1,28 @@
+= content_for :css do
+  = stylesheet_link_tag "chocoholic/application"
+
+%ul.breadcrumb
+  %li
+    %i.icon-folder-open
+  - @directory.ancestors.each do |a|
+    %li
+      = link_to a.name, {:id => a.id }
+      %span.divider= "/"
+  %li.active= @directory.name
+
+.row
+  .span3
+  .span9
+    .panel.rounded
+      .header.rounded-top
+        %h4
+          %i.icon-folder-open
+          = @directory.name
+
+      .content
+        = simple_nested_form_for @directory.becomes_content do |f|
+          = f.input :name
+          = f.button :submit
+
+
+

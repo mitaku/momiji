@@ -17,7 +17,22 @@ class HandoutUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "mcm/#{model.company.id}/#{model.id}"
+    "mcm/#{model.company.id}/#{model.parent_id}/#{model.id}"
+  end
+
+  before :cache, :save_original_filename
+
+  def save_original_filename(file)
+    model.name ||= file.original_filename if file.respond_to?(:original_filename)
+  end
+
+  def filename
+    "#{secure_token(10)}.#{file.extension}" if original_filename.present?
+  end
+
+  def secure_token(length=16)
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.hex(length/2))
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

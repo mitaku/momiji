@@ -5,36 +5,39 @@
     %li
       = link_to a.name, content_path(a)
       %span.divider= "/"
-  %li.active= @handout.name
+  %li= link_to @handout.name, content_handout_path(@handout.parent, @handout)
+  %li.active= "(編集)"
 
-.information
-  .panel.rounded
-    .header.rounded-top
-      %h4
-        %i.icon-info-sign
-        詳細
-    .content
-      %dl
-        %dt ファイル名
-        %dd
-        %dt ファイルタイプ
-        %dd
-        %dt ファイルサイズ
-        %dd
-        %dt タグ
-        %dd
-        %dt 更新日時
-        %dd
-        %dt 登録日時
-        %dd
-      .action
-        = link_to '#', :class => 'btn' do
-          %i.icon-download
-          = "ダウンロード"
-        = link_to 'キャンセル', {:action => :show}, :class => 'btn'
-
-
-
+.row
+  .span6
+    .panel.rounded
+      .header.rounded-top
+        %h4
+          %i.icon-info-sign
+          詳細
+      .content
+        .info
+          = image_tag "chocoholic/filetype/#{@handout.file_type}.png", :size => "48x48"
+          = link_to @handout.data.to_s, :class => 'btn btn-info' do
+            %i.icon-download
+            = "ダウンロード"
+        %dl
+          %dt ファイルタイプ
+          %dd= @handout.file_type
+          %dt ファイルサイズ
+          %dd 3 MB
+          %dt アップロード日時
+          %dd= @handout.created_at.strftime("%Y/%m/%d %H:%M")
+          %dt 更新日時
+          %dd= @handout.updated_at.strftime("%Y/%m/%d %H:%M")
+  .span6
+    .panel.rounded
+      .header.rounded-top
+        %h4
+          %i.icon-cog
+          管理
+      .content
+        = render 'form', :handout => @handout
 
 .history
   .panel.rounded
