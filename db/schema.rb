@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121213011502) do
+ActiveRecord::Schema.define(:version => 20121217150820) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -52,11 +52,24 @@ ActiveRecord::Schema.define(:version => 20121213011502) do
     t.string   "data"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "file_size"
   end
 
   add_index "chocoholic_contents", ["ancestry"], :name => "index_chocoholic_contents_on_ancestry"
   add_index "chocoholic_contents", ["company_id", "owner_id"], :name => "index_chocoholic_contents_on_company_id_and_owner_id"
   add_index "chocoholic_contents", ["type", "company_id"], :name => "index_chocoholic_contents_on_type_and_company_id"
+
+  create_table "chocoholic_permissions", :force => true do |t|
+    t.string   "category_name"
+    t.string   "category_item_name"
+    t.boolean  "readable",           :default => false, :null => false
+    t.boolean  "writable",           :default => false, :null => false
+    t.integer  "content_id"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+  end
+
+  add_index "chocoholic_permissions", ["content_id", "category_name", "category_item_name"], :name => "index_chocoholic_permissions_content_id"
 
   create_table "companies", :force => true do |t|
     t.string   "name"
