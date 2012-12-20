@@ -47,12 +47,12 @@
                 %tr.fields
                   %td
                     - if pf.object.new_record?
-                      = pf.input :resource_object_id, {:as => :select, :collection => target_company.users, :value_method => :id, :label_method => :name, :include_blank => true, :selected => pf.object.resource_id.to_s, :label => false}
+                      = pf.input :resource_object_id, {:as => :select, :collection => target_company.users, :value_method => :id, :label_method => :name, :include_blank => true, :selected => pf.object.resource_id.to_s, :label => false, :input_html => {:class => "span3"}}
                     - else
                       %label= pf.object.resource.name
                     = pf.input :resource_type_name, :as => :hidden, :input_html => { :value => "user" }
                   %td
-                    = pf.input :mode, {:as => :select, :collection => [["readonly", "閲覧のみ"], ["writable", "書き込み可能"]], :value_method => :first, :label_method => :last, :selected => pf.object.mode, :label => false}
+                    = pf.input :mode, {:as => :select, :collection => [["readonly", "閲覧のみ"], ["writable", "書き込み可能"]], :value_method => :first, :label_method => :last, :selected => pf.object.mode, :label => false, :input_html => {:class => "span3"}}
                   %td= pf.link_to_remove '', {:class => 'icon-remove-sign'}
               %tr
                 %td

@@ -17,14 +17,14 @@
       .content
         .info
           = image_tag "chocoholic/filetype/#{@handout.file_type}.png", :size => "48x48"
-          = link_to @handout.data.to_s, :class => 'btn btn-info' do
+          = link_to @handout.data.to_s, :class => 'btn' do
             %i.icon-download
             = "ダウンロード"
         %dl
           %dt ファイルタイプ
           %dd= @handout.file_type
           %dt ファイルサイズ
-          %dd 3 MB
+          %dd= number_to_human_size(@handout.file_size || 0, :precision => 1)
           %dt アップロード日時
           %dd= @handout.created_at.strftime("%Y/%m/%d %H:%M")
           %dt 更新日時
@@ -46,8 +46,8 @@
             - @handout.tag_list.each do |t|
               %span.label= t
         .action
-          = link_to '編集', {:action => :edit}, :class => 'btn btn-info'
-          = link_to({:action => :destroy}, :class => 'btn btn-danger', :method => :delete, :confirm => "Are you sure?") do
+          = link_to '編集', {:action => :edit}, :class => 'btn'
+          = link_to({:action => :destroy}, :class => 'btn', :method => :delete, :confirm => "Are you sure?") do
             %i.icon-trash
             = "削除"
 

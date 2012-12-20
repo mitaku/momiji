@@ -17,22 +17,24 @@ body
       &:hover
         border: 1px solid #999
 
-      .icon, .info, .type, .other_info
+      .icon, .info, .next_action, .other_info
         display: table-cell
         vertical-align: middle
 
       .icon
         width: 50px
-        // font-size: 48px
+        font-size: 48px
         padding: 0px 5px
         text-align: center
       .info
 
-      .type
-        text-align: right
-        width: 70px
       .other_info
-        width: 130px
+        text-align: right
+        width: 120px
+        @media screen and (max-width: 480px)
+          width: 0px
+      .next_action
         text-align: right
         padding-right: 10px
+
 

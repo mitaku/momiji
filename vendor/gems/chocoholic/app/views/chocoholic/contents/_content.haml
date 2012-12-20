@@ -3,29 +3,32 @@
     .icon= image_tag content.icon_path
     .info
       = link_to content.name, {:id => content.id, :action => :show}
-    .type
-      = "フォルダ"
     .other_info
-      .detail
-        = link_to edit_content_path(content) do
-          %i.icon-cog
-          編集
+      .visible-desktop
+    .next_action
+      .hidden-desktop
 
   - else
     .icon= image_tag content.icon_path
     .info
-      = link_to content.name, content.data.to_s
+      %span= link_to content.name, content.data.to_s
       .visible-desktop
+        = number_to_human_size(content.file_size || 0, :precision => 1)
         - content.tag_list.each do |t|
           %span.label= t
-    .type
-      = "ファイル"
-      .size
-        %span= number_to_human_size(content.file_size || 0, :precision => 1)
-    .other_info
-      .updated_at
+      .hidden-desktop
         = content.updated_at.strftime("%Y/%m/%d %H:%M")
-      .detail
+        = ", "
+        = number_to_human_size(content.file_size || 0, :precision => 1)
+    .other_info
+      .visible-desktop
+        .updated_at
+          = content.updated_at.strftime("%Y/%m/%d %H:%M")
+        .detail
+          = link_to content_handout_path(content.parent, content) do
+            %i.icon-info-sign
+            詳細
+    .next_action
+      .hidden-desktop
         = link_to content_handout_path(content.parent, content) do
-          %i.icon-info-sign
-          詳細
+          %i.icon-chevron-right

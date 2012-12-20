@@ -11,6 +11,17 @@
   %li.active= @directory.name
 
 .row
+  .span9
+    .panel.rounded
+      .header.rounded-top
+        %h4
+          %i.icon-folder-open
+          = @directory.name
+
+      .content
+        .chocoholic-contents
+          - @directory.children.order(:name).each do |content|
+            = render 'content', :content => content
   .span3
     .panel.rounded.visible-desktop
       = render 'action_menu', :directory => @directory
@@ -31,17 +42,6 @@
           - @directory.category_item_user_permissions.where(:mode => "writable").each do |u|
             %li= u.resource.name
 
-  .span9
-    .panel.rounded
-      .header.rounded-top
-        %h4
-          %i.icon-folder-open
-          = @directory.name
-
-      .content
-        .chocoholic-contents
-          - @directory.children.order(:name).each do |content|
-            = render 'content', :content => content
 
 #mkdir_dialog.modal.hide.fade(tabindex = "-1" role = "dialog" aria-lablledby="mkdirModalLabel" aria-hidden="true")
   .modal-header
