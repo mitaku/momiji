@@ -1,7 +1,5 @@
 @import colors/background_image
 
-$textColor: $base-text-color
-
 $bodyBackground: $base-color
 
 $heroUnitBackground: $main-color
@@ -15,15 +13,15 @@ $btnBackground: $base-color
 $btnBackgroundHighlight: darken($base-color, 10%)
 $btnBorder: darken($base-color, 10%)
 
-$navbarBackgroundHighlight: $base-color
-$navbarBackground: $base-color
+$navbarBackgroundHighlight: $main-color
+$navbarBackground: $main-color
 
 $navbarText: $base-text-color
 $navbarLinkColor: $base-text-color
-$navbarLinkColorHover: $base-text-color - 60
+$navbarLinkColorHover: $base-text-color
 $navbarLinkColorActive: darken($base-text-color, 5%)
-$navbarLinkBackgroundHover: $base-color - 10
-$navbarLinkBackgroundActive: darken($navbarBackground, 5%)
+$navbarLinkBackgroundHover: lighten($navbarBackground, 10%)
+$navbarLinkBackgroundActive: darken($navbarBackground, 25%)
 $navbarBrandColor: $base-text-color
 
 $hrBorder: darken($base-color, 10%)
@@ -42,18 +40,27 @@ html
   height: 100%
 
 body
-  padding: 60px 0 0
+  padding-top: 60px
   height: 100%
+
+  @media screen and (max-width: 980px)
+    padding-top: 0
 
   dl
     dt
       color: darken($base-color, 35%)
 
+  .nav-pills
+    li
+      a
+        background-color: lighten($navbarBackground, 15%)
+        border: 1px solid lighten($navbarBackground, 30%)
 
   #wrap
     min-height: 100%
 
   #main
+    color: $textColor
     overflow: auto
     padding-bottom: 150px
 
@@ -74,9 +81,13 @@ body
 
     .content
       padding: 1em
+      @media screen and (max-width: 480px)
+        padding: 0
 
     .header
-      background-color: $accent-color
+      background-color: $main-color
+      color: $base-text-color
+
       padding: 0.3em 0.8em
 
       h4
