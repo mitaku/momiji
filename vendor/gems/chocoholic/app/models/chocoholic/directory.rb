@@ -5,6 +5,12 @@ module Chocoholic
 
     validates :depth, :numericality => {:only_integer => true, :less_than_or_equal_to => MAX_DEPTH}, :on => :create
 
+
+    def user_permissions_attributes=(val)
+      p val
+      super
+    end
+
     def file_type
       "folder"
     end

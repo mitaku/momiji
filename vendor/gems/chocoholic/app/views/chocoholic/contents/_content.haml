@@ -16,8 +16,8 @@
     .info
       = link_to content.name, content.data.to_s
       .visible-desktop
-        %span.label カスタマーエンジニア向け
-        %span.label チェック済み
+        - content.tag_list.each do |t|
+          %span.label= t
     .type
       = "ファイル"
       .size

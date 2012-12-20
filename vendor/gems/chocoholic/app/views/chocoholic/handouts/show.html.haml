@@ -43,10 +43,8 @@
           %dd 公開中
           %dt タグ
           %dd
-            %span.label README
-            %span.label 納品物
-            %span.label 設計書
-            %span.label XXX社向け
+            - @handout.tag_list.each do |t|
+              %span.label= t
         .action
           = link_to '編集', {:action => :edit}, :class => 'btn btn-info'
           = link_to({:action => :destroy}, :class => 'btn btn-danger', :method => :delete, :confirm => "Are you sure?") do

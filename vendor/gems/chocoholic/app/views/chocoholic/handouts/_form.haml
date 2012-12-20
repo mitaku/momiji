@@ -1,5 +1,6 @@
 = simple_form_for [handout.parent.becomes_content, handout] do |f|
   = f.input :name
+  = f.input :tag_list
   = f.input :data
   .actions
     = f.button :submit, "保存"
