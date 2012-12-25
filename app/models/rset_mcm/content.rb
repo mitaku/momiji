@@ -11,6 +11,10 @@ module RsetMcm
       becomes(Content)
     end
 
+    def file_type
+      raise NotImprementError
+    end
+
     def directory?
       raise NotImprementError
     end
