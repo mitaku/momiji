@@ -7,6 +7,8 @@ module RsetMcm
                      :length => {:maximum => 60, :allow_blank => true},
                      :presence => true
 
+    acts_as_taggable
+
     def becomes_content
       becomes(Content)
     end
