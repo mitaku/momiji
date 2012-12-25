@@ -3,6 +3,7 @@ PATH
   specs:
     rset-mcm (0.0.1)
       acts-as-taggable-on
+      ancestry
       coffee-rails
       haml-rails
       jquery-rails
@@ -40,6 +41,8 @@ GEM
       multi_json (~> 1.0)
     acts-as-taggable-on (2.3.3)
       rails (~> 3.0)
+    ancestry (1.3.0)
+      activerecord (>= 2.3.14)
     arel (3.0.2)
     awesome_print (1.1.0)
     builder (3.0.4)

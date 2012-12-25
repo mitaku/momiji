@@ -7,6 +7,7 @@ module RsetMcm
                      :length => {:maximum => 60, :allow_blank => true},
                      :presence => true
 
+    has_ancestry
     acts_as_taggable
 
     def becomes_content
