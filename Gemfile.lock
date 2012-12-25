@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     rset-mcm (0.0.1)
+      acts-as-taggable-on
       coffee-rails
       haml-rails
       jquery-rails
@@ -37,6 +38,8 @@ GEM
     activesupport (3.2.9)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    acts-as-taggable-on (2.3.3)
+      rails (~> 3.0)
     arel (3.0.2)
     awesome_print (1.1.0)
     builder (3.0.4)
