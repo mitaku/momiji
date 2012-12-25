@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121225115349) do
+ActiveRecord::Schema.define(:version => 20121225132012) do
 
   create_table "rset_mcm_contents", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,19 @@ ActiveRecord::Schema.define(:version => 20121225115349) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "rset_mcm_contents", ["ancestry"], :name => "index_rset_mcm_contents_on_ancestry"
   add_index "rset_mcm_contents", ["company_id"], :name => "index_rset_mcm_contents_on_company_id"
+
+  create_table "rset_mcm_permissions", :force => true do |t|
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.string   "mode"
+    t.integer  "content_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "rset_mcm_permissions", ["content_id"], :name => "index_rset_mcm_permissions_on_content_id"
+  add_index "rset_mcm_permissions", ["resource_id", "resource_type"], :name => "index_rset_mcm_permissions_on_resource_id_and_resource_type"
 
 end
