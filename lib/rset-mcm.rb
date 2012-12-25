@@ -1,4 +1,1 @@
-require "rset-mcm/engine"
-
-module RsetMcm
-end
+require "rset_mcm"

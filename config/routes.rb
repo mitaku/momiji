@@ -1,2 +1,2 @@
-RsetMcm::Engine.routes.draw do
+RsetMCM::Engine.routes.draw do
 end

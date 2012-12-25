@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
 
-  mount RsetMcm::Engine => "/rset-mcm"
+  mount RsetMCM::Engine => "/rset-mcm"
 end
