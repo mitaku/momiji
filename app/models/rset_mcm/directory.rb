@@ -1,5 +1,6 @@
 module RsetMcm
   class Directory < Content
-    # attr_accessible :title, :body
+    MAX_DEPTH = 10
+    validates :depth, :numericality => {:only_integer => true, :less_than_or_equal_to => MAX_DEPTH}, :on => :create
   end
 end
