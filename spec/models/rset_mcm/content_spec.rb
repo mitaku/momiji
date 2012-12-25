@@ -1,7 +1,13 @@
 require 'spec_helper'
 
-module RsetMCM
+module RsetMcm
   describe Content do
-    pending "add some examples to (or delete) #{__FILE__}"
+    it { should have_db_column(:name).of_type(:string) }
+    it { should have_db_column(:type).of_type(:string) }
+    it { should have_db_column(:company_id).of_type(:integer) }
+    it { should have_db_column(:ancestry).of_type(:string) }
+    it { should have_db_column(:data).of_type(:string) }
+    it { should have_db_column(:file_size).of_type(:integer) }
+    it { should belong_to(:company) }
   end
 end

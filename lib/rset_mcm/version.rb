@@ -1,3 +1,3 @@
-module RsetMCM
+module RsetMcm
   VERSION = "0.0.1"
 end

@@ -2,5 +2,5 @@
 
 require "rset_mcm/engine"
 
-module RsetMCM
+module RsetMcm
 end

@@ -1,4 +1,4 @@
-module RsetMCM
+module RsetMcm
   module ApplicationHelper
   end
 end

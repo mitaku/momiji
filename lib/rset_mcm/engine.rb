@@ -1,6 +1,6 @@
-module RsetMCM
+module RsetMcm
   class Engine < ::Rails::Engine
-    isolate_namespace RsetMCM
+    isolate_namespace RsetMcm
     config.generators do |g|
       g.template_engine :haml
       g.javascript_engine :coffee

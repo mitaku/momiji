@@ -6,7 +6,7 @@ require "rset_mcm/version"
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "rset-mcm"
-  s.version     = RsetMCM::VERSION
+  s.version     = RsetMcm::VERSION
   s.authors     = ["Takumi Miura"]
   s.email       = ["takumi.miura@optim.co.jp"]
   s.homepage    = ""
