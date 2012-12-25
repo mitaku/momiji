@@ -12,5 +12,27 @@ module RsetMcm
     def directory?
       true
     end
+
+    def handouts
+      children.where(:type => 'RsetMcm::Handout')
+    end
+
+    def build_handout(attr = {})
+      h = RsetMcm::Handout.new(attr)
+      h.company_id = self.company_id
+      h.parent = self
+      h
+    end
+
+    def create_handout(attr = {})
+      build_handout(attr).save
+    end
+
+    def build_directory(attr = {})
+      d = RsetMcm::Directory.new(attr)
+      d.parent = self
+      d.company_id = self.company_id
+      d
+    end
   end
 end
