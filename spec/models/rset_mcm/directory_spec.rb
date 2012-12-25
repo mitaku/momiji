@@ -5,5 +5,9 @@ module RsetMcm
     describe 'Validation' do
       it "depth"
     end
+
+    describe '#directory?' do
+      its(:directory?) { should be }
+    end
   end
 end
