@@ -4,6 +4,7 @@ PATH
     rset-mcm (0.0.1)
       acts-as-taggable-on
       ancestry
+      carrierwave
       coffee-rails
       haml-rails
       jquery-rails
@@ -56,6 +57,9 @@ GEM
     capybara-webkit (0.13.0)
       capybara (>= 1.0.0, < 1.2)
       json
+    carrierwave (0.7.1)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
     coderay (1.0.8)
