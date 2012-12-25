@@ -11,5 +11,6 @@ class CreateRsetMcmContents < ActiveRecord::Migration
       t.timestamps
     end
     add_index :rset_mcm_contents, :company_id
+    add_index :rset_mcm_contents, :ancestry
   end
 end
