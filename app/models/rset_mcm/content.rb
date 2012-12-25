@@ -7,6 +7,9 @@ module RsetMcm
                      :length => {:maximum => 60, :allow_blank => true},
                      :presence => true
 
+    def becomes_content
+      becomes(Content)
+    end
 
     def directory?
       raise NotImprementError
