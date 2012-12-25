@@ -9,26 +9,7 @@
 
 .row
   .span6
-    .panel.rounded
-      .header.rounded-top
-        %h4
-          %i.icon-info-sign
-          詳細
-      .content
-        .info
-          = image_tag "chocoholic/filetype/#{@handout.file_type}.png", :size => "48x48"
-          = link_to @handout.data.to_s, :class => 'btn' do
-            %i.icon-download
-            = "ダウンロード"
-        %dl
-          %dt ファイルタイプ
-          %dd= @handout.file_type
-          %dt ファイルサイズ
-          %dd= number_to_human_size(@handout.file_size || 0, :precision => 1)
-          %dt アップロード日時
-          %dd= @handout.created_at.strftime("%Y/%m/%d %H:%M")
-          %dt 更新日時
-          %dd= @handout.updated_at.strftime("%Y/%m/%d %H:%M")
+    = render 'detail_panel', :handout => @handout
   .span6
     .panel.rounded
       .header.rounded-top
@@ -39,8 +20,6 @@
         %dl
           %dt ファイル名
           %dd= @handout.name
-          %dt ステータス
-          %dd 公開中
           %dt タグ
           %dd
             - @handout.tag_list.each do |t|

@@ -6,27 +6,12 @@
     %i.icon-folder-open
   - @directory.ancestors.each do |a|
     %li
-      = link_to a.name, {:id => a.id }
+      = link_to a.name, content_path(a)
       %span.divider= "/"
-  %li.active= @directory.name
+  %li= link_to @directory.name, content_path(@directory)
+  %li.active= "(編集)"
 
 .row
-  .span3
-    .panel.rounded.visible-desktop
-      .content
-        - directory = @directory
-        %ul.nav.nav-list
-          %li.nav-header 操作
-          %li
-            = link_to edit_content_path(directory) do
-              %i.icon-info-sign
-              = "詳細"
-          - unless directory.is_root?
-            %li.divider
-            %li
-              = link_to({:action => :destroy}, :method => :delete, :confirm => "Are you sure?") do
-                %i.icon-trash
-                = "削除"
   .span9
     .panel.rounded
       .header.rounded-top
@@ -67,13 +52,33 @@
             = f.fields_for :category_item_user_permissions, wrapper: false do |pf|
               %tr.fields
                 %td
-                  = pf.collection_select :resource_object_id, target_company.user_categories.map { |uc| uc.items }.flatten, :id, :name_with_category, {:include_blank => true, :selected => pf.object.resource_id.to_s}
+                  - if pf.object.new_record?
+                    = pf.collection_select :resource_object_id, target_company.user_categories.map { |uc| uc.items }.flatten, :id, :name_with_category, {:include_blank => true, :selected => pf.object.resource_id.to_s, :class => "span3"}
+                  - else
+                    %label= pf.object.resource.name_with_category
                   = pf.hidden_field :resource_type_name, :value => "category_item"
                 %td
-                  = pf.collection_select :mode, [["readonly", "閲覧のみ"] ,["writable", '書き込み可能']], :first, :last, {:selected => pf.object.mode}
+                  = pf.collection_select :mode, [["readonly", "閲覧のみ"] ,["writable", '書き込み可能']], :first, :last, {:selected => pf.object.mode, :class => "span3"}
                 %td= pf.link_to_remove '', {:class => 'icon-remove-sign'}
             %tr
               %td
               %td
               %td= f.link_to_add '', :category_item_user_permissions, {:class => 'icon-plus-sign'}
           = f.button :submit
+
+  .span3
+    .panel.rounded.visible-desktop
+      .content
+        - directory = @directory
+        %ul.nav.nav-list
+          %li.nav-header 操作
+          %li
+            = link_to edit_content_path(directory) do
+              %i.icon-info-sign
+              = "詳細"
+          - unless directory.is_root?
+            %li.divider
+            %li
+              = link_to({:action => :destroy}, :method => :delete, :confirm => "Are you sure?") do
+                %i.icon-trash
+                = "削除"
