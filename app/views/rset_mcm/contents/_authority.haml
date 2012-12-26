@@ -1,14 +1,2 @@
 .content
   %ul.nav.nav-list
-    %li.nav-header 閲覧のみのユーザー
-    - directory.user_permissions.where(:mode => "readonly").each do |u|
-      %li= u.resource.name
-    %li.nav-header 閲覧のみのユーザー分類
-    - directory.category_item_user_permissions.where(:mode => "readonly").each do |u|
-      %li= u.resource.name
-    %li.nav-header 書き込み可能のユーザー
-    - directory.user_permissions.where(:mode => "writable").each do |u|
-      %li= u.resource.name
-    %li.nav-header 書き込み可能のユーザー分類
-    - directory.category_item_user_permissions.where(:mode => "writable").each do |u|
-      %li= u.resource.name

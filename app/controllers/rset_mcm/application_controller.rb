@@ -1,4 +1,5 @@
 module RsetMcm
-  class ApplicationController < ActionController::Base
+  class ApplicationController < ::ApplicationController
+    before_filter :authenticate_user!
   end
 end
