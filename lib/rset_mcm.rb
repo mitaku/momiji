@@ -5,6 +5,7 @@ require "rset_mcm/company_methods"
 require "ancestry"
 require "acts-as-taggable-on"
 require "simple_form"
+require "enumerize"
 
 module RsetMcm
 end
