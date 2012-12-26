@@ -17,6 +17,7 @@ module RsetMcm
     it { should_not allow_mass_assignment_of(:data) }
     it { should_not allow_mass_assignment_of(:file_size) }
 
+    it { should have_many(:permissions).dependent(:destroy) }
     it { should have_many(:taggings).dependent(:destroy) }
     it { should have_many(:base_tags).through(:taggings) }
 
