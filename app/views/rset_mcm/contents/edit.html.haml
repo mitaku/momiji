@@ -1,0 +1,21 @@
+= content_for :css do
+  = stylesheet_link_tag "chocoholic/application"
+
+= render 'breadcrumb', :directory => @directory
+
+.row
+  .span9
+    .panel.rounded
+      .header.rounded-top
+        %h4
+          %i.icon-folder-open
+          = @directory.name
+
+      .content
+        = simple_nested_form_for @directory.becomes_content do |f|
+          = f.input :name
+          = f.button :submit
+
+  .span3
+    .panel.rounded.visible-desktop
+      = render 'action_menu', :directory => @directory, :actions => [:show, :destroy]

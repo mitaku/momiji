@@ -1,13 +1,20 @@
 .content
   %ul.nav.nav-list
     %li.nav-header= t("rset_mcm.common.action")
-    %li
-      = link_to edit_content_path(directory) do
-        %i.icon-cog
-        = t("rset_mcm.common.edit")
-    - unless directory.is_root?
-      %li.divider
+    - if actions.include?(:show)
       %li
-        = link_to({:action => :destroy}, :method => :delete, :confirm => t("rset_mcm.common.confirm.destroy")) do
-          %i.icon-trash
-          = t("rset_mcm.common.destroy")
+        = link_to content_path(directory) do
+          %i.icon-info-sign
+          = t("rset_mcm.common.detail")
+    - if actions.include?(:edit)
+      %li
+        = link_to edit_content_path(directory) do
+          %i.icon-cog
+          = t("rset_mcm.common.edit")
+    - if actions.include?(:destroy)
+      - unless directory.is_root?
+        %li.divider
+        %li
+          = link_to({:action => :destroy}, :method => :delete, :confirm => t("rset_mcm.common.confirm.destroy")) do
+            %i.icon-trash
+            = t("rset_mcm.common.destroy")

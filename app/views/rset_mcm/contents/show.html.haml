@@ -12,9 +12,10 @@
         .chocoholic-contents
           - @directory.children.order(:name).each do |content|
             = render 'content', :content => content
+
   .span3
     .panel.rounded.visible-desktop
-      = render 'action_menu', :directory => @directory
+      = render 'action_menu', :directory => @directory, :actions => [:update, :destroy]
 
     .panel.rounded.visible-desktop
       = render 'authority', :directory => @directory
