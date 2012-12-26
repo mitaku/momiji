@@ -1,15 +1,15 @@
 .rset-mcm-content
   - if content.directory?
-    .icon= image_tag content.icon_path
+    .icon= image_tag content.icon_path, :size => "48x48"
     .info
-      = link_to content.name, content_path(content)
+      = link_to content.name, content_path(content.id)
     .other_info
       .visible-desktop
     .next_action
       .hidden-desktop
 
   - else
-    .icon= image_tag content.icon_path
+    .icon= image_tag content.icon_path, :size => "48x48"
     .info
       %span= link_to content.name, content.data.to_s
       .visible-desktop
@@ -17,7 +17,7 @@
         - content.tag_list.each do |t|
           %span.label= t
       .hidden-desktop
-        = t(".size_and_updated_at", :default => "%{updated_at}, %{size}", :size => number_to_human_size(content.file_size || 0, :precision => 1), :update_at => l(content.updated_at, :format => :short))
+        = t(".size_and_updated_at", :default => "%{updated_at}, %{size}", :size => number_to_human_size(content.file_size || 0, :precision => 1), :updated_at => l(content.updated_at, :format => :short))
     .other_info
       .visible-desktop
         .updated_at

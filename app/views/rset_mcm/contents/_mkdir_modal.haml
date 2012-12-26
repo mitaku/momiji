@@ -3,6 +3,6 @@
     %button.close(type="button" data-dismiss="modal" aria-hidden="true") ×
     %h3#mkdirModalLabel= t("rset_mcm.common.mkdir")
   .modal-body
-    = simple_form_for [directory.parent, directory.becomes_content, RsetMcm::Directory.new] do |f|
+    = simple_form_for RsetMcm::Directory.new, :url => content_directories_path(directory.becomes_content) do |f|
       = f.input :name, :label => "フォルダ名"
       %button.btn.btn-primary(type="submit")= t("rset_mcm.common.add")

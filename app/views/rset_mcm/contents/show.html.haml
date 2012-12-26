@@ -1,3 +1,6 @@
+= content_for :css do
+  = stylesheet_link_tag "rset_mcm/application"
+
 = render 'breadcrumb', :directory => @directory
 
 .row
@@ -9,13 +12,13 @@
           = @directory.name
 
       .content
-        .chocoholic-contents
+        .rset-mcm-contents
           - @directory.children.order(:name).each do |content|
             = render 'content', :content => content
 
   .span3
     .panel.rounded.visible-desktop
-      = render 'action_menu', :directory => @directory, :actions => [:update, :destroy, :mkdir]
+      = render 'action_menu', :directory => @directory, :actions => [:update, :destroy, :mkdir, :upload]
 
     .panel.rounded.visible-desktop
       = render 'authority', :directory => @directory

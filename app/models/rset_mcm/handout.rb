@@ -11,6 +11,21 @@ module RsetMcm
       false
     end
 
+    def file_type
+      case name.split(".").last
+      when "xls", "xlsx"
+        "excel"
+      when "pdf"
+        "pdf"
+      when "doc", "docx"
+        "word"
+      when "ppt", "pptx"
+        "power_point"
+      else
+        "file"
+      end
+    end
+
     private
     def update_data_attributes
       if data.present? && data_changed?

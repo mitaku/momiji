@@ -16,13 +16,21 @@
         = link_to "#mkdir_dialog", {:'data-toggle' => "modal"} do
           %i.icon-plus-sign
           = t("rset_mcm.common.mkdir")
+    - if actions.include?(:upload)
+      %li
+        = link_to "#upload_dialog", {:'data-toggle' => "modal"} do
+          %i.icon-upload
+          = t("rset_common.common.upload")
     - if actions.include?(:destroy)
       - unless directory.is_root?
         %li.divider
         %li
-          = link_to({:action => :destroy}, :method => :delete, :confirm => t("rset_mcm.common.confirm.destroy")) do
+          = link_to({:action => :destroy}, :method => :delete, :confirm => t("rset_mcm.common.confirm.destroy", :default => "Are you sure?")) do
             %i.icon-trash
             = t("rset_mcm.common.destroy")
 
 - if actions.include?(:mkdir)
   = render "mkdir_modal", :directory => directory
+
+- if actions.include?(:upload)
+  = render "upload_modal", :directory => directory
