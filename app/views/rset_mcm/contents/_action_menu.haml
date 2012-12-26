@@ -11,6 +11,11 @@
         = link_to edit_content_path(directory) do
           %i.icon-cog
           = t("rset_mcm.common.edit")
+    - if actions.include?(:mkdir)
+      %li
+        = link_to "#mkdir_dialog", {:'data-toggle' => "modal"} do
+          %i.icon-plus-sign
+          = t("rset_mcm.common.mkdir")
     - if actions.include?(:destroy)
       - unless directory.is_root?
         %li.divider
@@ -18,3 +23,6 @@
           = link_to({:action => :destroy}, :method => :delete, :confirm => t("rset_mcm.common.confirm.destroy")) do
             %i.icon-trash
             = t("rset_mcm.common.destroy")
+
+- if actions.include?(:mkdir)
+  = render "mkdir_modal", :directory => directory

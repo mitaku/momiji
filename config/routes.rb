@@ -3,5 +3,7 @@ RsetMcm::Engine.routes.draw do
 
   resources :contents, :only => [:show, :edit, :update, :destroy] do
     resources :handouts, :only => [:show, :edit, :update, :create, :destroy]
+    resources :directories, :only => [:create]
+
   end
 end

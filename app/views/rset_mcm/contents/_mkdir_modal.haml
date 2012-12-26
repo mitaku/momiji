@@ -1,0 +1,8 @@
+#mkdir_dialog.modal.hide.fade(tabindex = "-1" role = "dialog" aria-lablledby="mkdirModalLabel" aria-hidden="true")
+  .modal-header
+    %button.close(type="button" data-dismiss="modal" aria-hidden="true") ×
+    %h3#mkdirModalLabel= t("rset_mcm.common.mkdir")
+  .modal-body
+    = simple_form_for [directory.parent, directory.becomes_content, RsetMcm::Directory.new] do |f|
+      = f.input :name, :label => "フォルダ名"
+      %button.btn.btn-primary(type="submit")= t("rset_mcm.common.add")

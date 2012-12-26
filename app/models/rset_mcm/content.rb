@@ -14,6 +14,10 @@ module RsetMcm
     has_ancestry
     acts_as_taggable
 
+    def icon_path
+      "rset_mcm/filetype/#{file_type}.png"
+    end
+
     def becomes_content
       becomes(Content)
     end
