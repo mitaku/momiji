@@ -1,0 +1,32 @@
+.rset-mcm-content
+  - if content.directory?
+    .icon= image_tag content.icon_path
+    .info
+      = link_to content.name, content_path(content)
+    .other_info
+      .visible-desktop
+    .next_action
+      .hidden-desktop
+
+  - else
+    .icon= image_tag content.icon_path
+    .info
+      %span= link_to content.name, content.data.to_s
+      .visible-desktop
+        = number_to_human_size(content.file_size || 0, :precision => 1)
+        - content.tag_list.each do |t|
+          %span.label= t
+      .hidden-desktop
+        = t(".size_and_updated_at", :default => "%{updated_at}, %{size}", :size => number_to_human_size(content.file_size || 0, :precision => 1), :update_at => l(content.updated_at, :format => :short))
+    .other_info
+      .visible-desktop
+        .updated_at
+          = l(content.updated_at, :format => :short)
+        .detail
+          = link_to content_handout_path(content.parent, content) do
+            %i.icon-info-sign
+            = t("rset_mcm.common.detail")
+    .next_action
+      .hidden-desktop
+        = link_to content_handout_path(content.parent, content) do
+          %i.icon-chevron-right
