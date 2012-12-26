@@ -1,0 +1,35 @@
+body
+  .rset-mcm-contents
+    width: 100%
+    display: table
+    border-collapse: collapse
+
+    .rset-mcm-content
+      min-width: 480px
+      height: 60px
+      max-height: 60px
+      display: table-row
+      border: 1px solid #CCC
+      background-color: white
+      &:hover
+        border: 1px solid #999
+
+      .icon, .info, .next_action, .other_info
+        display: table-cell
+        vertical-align: middle
+
+      .icon
+        width: 50px
+        font-size: 48px
+        padding: 0px 5px
+        text-align: center
+      .info
+
+      .other_info
+        text-align: right
+        width: 120px
+        @media screen and (max-width: 480px)
+          width: 0px
+      .next_action
+        text-align: right
+        padding-right: 10px
