@@ -23,6 +23,8 @@ Gem::Specification.new do |s|
   s.add_dependency "ancestry"
   s.add_dependency "carrierwave"
   s.add_dependency "enumerize"
+  s.add_dependency "simple_form"
+  s.add_dependency "nested_form"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "tapp"
