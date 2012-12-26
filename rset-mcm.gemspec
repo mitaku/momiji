@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency "acts-as-taggable-on"
   s.add_dependency "ancestry"
   s.add_dependency "carrierwave"
+  s.add_dependency "enumerize"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "tapp"
