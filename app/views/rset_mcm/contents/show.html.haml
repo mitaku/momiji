@@ -20,5 +20,6 @@
     .panel.rounded.visible-desktop
       = render 'action_menu', :directory => @directory, :actions => [:edit, :destroy, :mkdir, :upload]
 
-    .panel.rounded.visible-desktop
-      = render 'authority', :directory => @directory
+    -#
+      .panel.rounded.visible-desktop
+        = render 'authority', :directory => @directory

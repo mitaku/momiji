@@ -2,6 +2,8 @@ require_dependency "rset_mcm/application_controller"
 
 module RsetMcm
   class ContentsController < ApplicationController
+    respond_to :html
+
     before_filter :authenticate_user!
     before_filter :set_directory, :only => [:show, :edit, :destroy, :update]
 
@@ -15,21 +17,14 @@ module RsetMcm
       raise if @directory.is_root?
       @directory.destroy
 
-      respond_to do |format|
-        format.html { redirect_to content_path(@directory.parent) }
-        format.json { head :no_content }
-      end
+      redirect_to content_path(@directory.parent), notice: I18n.t("rset_mcm.contents.notice.destroy", :name => @directory.name)
     end
 
     def update
-      respond_to do |format|
-        if @directory.update_attributes(params[:content])
-          format.html { redirect_to content_path(@directory), notice: 'Content was successfully updated.' }
-          format.json { head :no_content }
-        else
-          format.html { render action: "edit" }
-          format.json { render json: @directory.errors, status: :unprocessable_entity }
-        end
+      if @directory.update_attributes(params[:content])
+        redirect_to content_path(@directory), notice: I18n.t("rset_mcm.contents.notice.update", :name => @directory.name)
+      else
+        render action: "edit"
       end
     end
 

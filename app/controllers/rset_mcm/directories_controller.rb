@@ -6,18 +6,19 @@ require_dependency "rset_mcm/application_controller"
 
 module RsetMcm
   class DirectoriesController < ApplicationController
+    respond_to :html
     before_filter :set_directory
 
     def create
       @new_directory = @directory.build_directory(params[:directory])
 
-      respond_to do |format|
-        if @new_directory.save
-          format.html { redirect_to(content_path(@directory), notice: 'Directory was successfully created.' ) }
-        else
-          raise
-        end
+      if @new_directory.save
+        options = {:notice => I18n.t("rset_mcm.directories.notice.create")}
+      else
+        options = {:alert => I18n.t("rset_mcm.errors.mkdir")}
       end
+
+      redirect_to(content_path(@directory), options)
     end
 
     private

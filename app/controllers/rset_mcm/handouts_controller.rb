@@ -2,6 +2,8 @@ require_dependency "rset_mcm/application_controller"
 
 module RsetMcm
   class HandoutsController < ApplicationController
+    respond_to :html
+
     before_filter :set_directory
     before_filter :set_handout, :only => [:show, :edit, :update, :destroy]
 
@@ -12,37 +14,28 @@ module RsetMcm
     end
 
     def update
-      respond_to do |format|
-        if @handout.update_attributes(params[:handout])
-          format.html { redirect_to content_path(@directory), notice: 'Handout was successfully updated.' }
-          format.json { head :no_content }
-        else
-          format.html { render action: "edit" }
-          format.json { render json: @handout.errors, status: :unprocessable_entity }
-        end
+      if @handout.update_attributes(params[:handout])
+        redirect_to content_path(@directory), notice: I18n.t("rset_mcm.handouts.notice.update", name: @handout.name)
+      else
+        render action: "edit"
       end
     end
 
     def create
-      @content = @directory.build_handout(params[:content])
+      @content = @directory.build_handout(params[:handout])
 
-      respond_to do |format|
-        if @content.save
-          format.html { redirect_to content_path(@directory), notice: 'Handout was successfully created.' }
-          format.json { render json: @content, status: :created, location: @content }
-        else
-          raise
-        end
+      if @content.save
+        options = {:notice => I18n.t("rset_mcm.handouts.notice.create")}
+      else
+        options = {:alert => I18n.t("rset_mcm.errors.file_upload")}
       end
+      redirect_to content_path(@directory), options
     end
 
     def destroy
       @handout.destroy
 
-      respond_to do |format|
-        format.html { redirect_to content_path(@directory) }
-        format.json { head :no_content }
-      end
+      redirect_to content_path(@directory), notice: I18n.t("rset_mcm.handouts.notice.destroy", name: @handout.name)
     end
 
     private

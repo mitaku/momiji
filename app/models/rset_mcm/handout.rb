@@ -4,6 +4,10 @@ module RsetMcm
     attr_accessible :tag_list
 
     mount_uploader :data, HandoutUploader
+    MAX_FILE_SIZE = 50.megabytes.to_i
+
+    validates :data, :presence => true
+    validates :file_size, :numericality => {:only_integer => true, :less_than_or_equal_to => MAX_FILE_SIZE}
 
     before_validation :update_data_attributes
 
@@ -15,8 +19,6 @@ module RsetMcm
       case name.split(".").last
       when "xls", "xlsx"
         "excel"
-      when "pdf"
-        "pdf"
       when "doc", "docx"
         "word"
       when "ppt", "pptx"
