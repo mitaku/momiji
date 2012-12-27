@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v0.0.5
+- ファイルのダウンロードをX-Accel-Redirectで行う
+
 ## v0.0.4
 - flash周りを追加
 
