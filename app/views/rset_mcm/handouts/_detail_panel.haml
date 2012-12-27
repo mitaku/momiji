@@ -6,7 +6,7 @@
   .content
     .info
       = file_icon_image_tag(handout)
-      = link_to handout.data.to_s, :class => 'btn' do
+      = link_to download_content_handouts_path(handout.parent_id, :name => handout.name), :class => 'btn' do
         %i.icon-download
         = t("rset_mcm.common.download")
     %dl

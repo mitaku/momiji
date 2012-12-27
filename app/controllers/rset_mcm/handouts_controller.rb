@@ -7,6 +7,14 @@ module RsetMcm
     before_filter :set_directory
     before_filter :set_handout, :only => [:show, :edit, :update, :destroy]
 
+    def download
+      handout = @directory.handouts.find_by_name!(params[:name])
+
+      response.header["X-Reproxy-Url"] = handout.data.to_s
+
+      render :nothing => true, :status => 200
+    end
+
     def show
     end
 

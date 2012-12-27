@@ -8,6 +8,10 @@ module RsetMcm
       image_tag content.icon_path, :size => "48x48"
     end
 
+    def mcm_download_link(content)
+      link_to content.name, download_content_handouts_path(content.parent_id, :name => content.name)
+    end
+
     def list_with_info_block(_objects, key, i18n_options = {}, &block)
       objects = _objects.to_a
       if block_given? && objects.present?

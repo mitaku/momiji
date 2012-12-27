@@ -11,7 +11,8 @@
   - else
     .icon= file_icon_image_tag(content)
     .info
-      %span= link_to content.name, content.data.to_s
+      %span= mcm_download_link(content)
+
       .visible-desktop
         = rset_mcm_file_size(content.file_size)
         - content.tag_list.each do |t|
