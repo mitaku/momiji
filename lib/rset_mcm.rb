@@ -6,6 +6,7 @@ require "ancestry"
 require "acts-as-taggable-on"
 require "simple_form"
 require "enumerize"
+require "nested_form"
 
 module RsetMcm
 end
