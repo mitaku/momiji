@@ -13,12 +13,12 @@
 
       .content
         .rset-mcm-contents
-          - @directory.children.order(:name).each do |content|
-            = render 'content', :content => content
+          - list_with_info_block(@directory.children.order(:name), "rset_mcm.contents.list_blank_html") do |obj|
+            = render 'content', :content => obj
 
   .span3
     .panel.rounded.visible-desktop
-      = render 'action_menu', :directory => @directory, :actions => [:update, :destroy, :mkdir, :upload]
+      = render 'action_menu', :directory => @directory, :actions => [:edit, :destroy, :mkdir, :upload]
 
     .panel.rounded.visible-desktop
       = render 'authority', :directory => @directory

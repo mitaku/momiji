@@ -1,0 +1,11 @@
+= simple_form_for [handout.parent.becomes_content, handout] do |f|
+  = f.input :name
+  = f.input :tag_list
+  = f.input :data
+  .actions
+    %button.btn(type="submit")
+      %i.icon-ok
+      = t("rset_mcm.common.save")
+    = link_to({:action => :show}, :class => 'btn') do
+      %i.icon-undo
+      = t("rset_mcm.common.cancel")

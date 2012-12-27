@@ -3,6 +3,6 @@
     %i.icon-folder-open
   - directory.ancestors.each do |a|
     %li
-      = link_to a.name, {:id => a.id}
-      %span.divider= t(".divider", "default" => "/")
-  %li.active= directory.name
+      = link_to a.name, content_path(a.id)
+      %span.divider= t(".divider", :default => "/")
+  %li.active= directory.name_was

@@ -1,0 +1,20 @@
+.panel.rounded
+  .header.rounded-top
+    %h4
+      %i.icon-info-sign
+      = t("rset_mcm.common.detail")
+  .content
+    .info
+      = file_icon_image_tag(handout)
+      = link_to handout.data.to_s, :class => 'btn' do
+        %i.icon-download
+        = t("rset_mcm.common.download")
+    %dl
+      %dt= t(".file_type")
+      %dd= t(handout.file_type, :scope => "rset_mcm.filetype")
+      %dt= t(".file_size")
+      %dd= rset_mcm_file_size(handout.file_size)
+      %dt= t(".created_at")
+      %dd= l handout.created_at
+      %dt= t(".updated_at")
+      %dd= l handout.updated_at

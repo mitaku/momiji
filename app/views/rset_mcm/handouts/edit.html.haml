@@ -1,0 +1,28 @@
+= content_for :css do
+  = stylesheet_link_tag "rset_mcm/application"
+
+%ul.breadcrumb
+  %li
+    %i.icon-folder-open
+  - @handout.ancestors.each do |a|
+    %li
+      = link_to a.name, content_path(a)
+      %span.divider= "/"
+  %li= link_to @handout.name, content_handout_path(@handout.parent, @handout)
+  %li.active= "(編集)"
+
+.row
+  .span6
+    .panel.rounded
+      .header.rounded-top
+        %h4
+          %i.icon-cog
+          = t("rset_mcm.common.admin")
+      .content
+        = render 'form', :handout => @handout
+  .span6
+    = render 'detail_panel', :handout => @handout
+
+.row
+  .span12
+    -# = render "history"

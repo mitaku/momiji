@@ -9,12 +9,18 @@
       .header.rounded-top
         %h4
           %i.icon-folder-open
-          = @directory.name
+          = @directory.name_was
 
       .content
         = simple_nested_form_for @directory.becomes_content do |f|
           = f.input :name
-          = f.button :submit
+          .actions
+            %button.btn(type="submit")
+              %i.icon-ok
+              = t("rset_mcm.common.save")
+            = link_to({:action => :show}, :class => 'btn') do
+              %i.icon-undo
+              = t("rset_mcm.common.cancel")
 
   .span3
     .panel.rounded.visible-desktop
