@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v0.0.6
+## v0.1.0 (v0.0.6)
 - ダウンロード時のヘッダにX-Accel-Redirectを追加
 
 ## v0.0.5
