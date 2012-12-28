@@ -1,7 +1,10 @@
 # CHANGELOG
 
+## v0.0.6
+- ダウンロード時のヘッダにX-Accel-Redirectを追加
+
 ## v0.0.5
-- ファイルのダウンロードをX-Accel-Redirectで行う
+- ファイルのダウンロードをX-Reploxy-Urlで行う
 
 ## v0.0.4
 - flash周りを追加
