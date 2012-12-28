@@ -10,6 +10,7 @@ module RsetMcm
     def download
       handout = @directory.handouts.find_by_name!(params[:name])
 
+      response.header['X-Accel-Redirect'] = '/.reploxy'
       response.header["X-Reproxy-Url"] = handout.data.to_s
 
       render :nothing => true, :status => 200
