@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
 
-
 require_dependency "rset_mcm/application_controller"
 
 module RsetMcm
