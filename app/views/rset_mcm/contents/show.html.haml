@@ -14,12 +14,13 @@
       .content
         .rset-mcm-contents
           - list_with_info_block(@directory.children.order(:name), "rset_mcm.contents.list_blank_html") do |obj|
-            = render 'content', :content => obj
+            - unless obj.authority(current_user).include?(:prohibit)
+              = render 'content', :content => obj
 
   .span3
-    .panel.rounded.visible-desktop
-      = render 'action_menu', :directory => @directory, :actions => [:edit, :destroy, :mkdir, :upload]
-
-    -#
+    - if @current_authority.writable?
       .panel.rounded.visible-desktop
-        = render 'authority', :directory => @directory
+        = render 'action_menu', :directory => @directory, :authority => @current_authority, :actions => [:edit, :destroy, :mkdir, :upload]
+
+    .panel.rounded.visible-desktop
+      = render 'authority', :directory => @directory

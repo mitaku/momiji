@@ -14,6 +14,31 @@
       .content
         = simple_nested_form_for @directory.becomes_content do |f|
           = f.input :name
+
+          - unless @directory.is_root?
+            #user_permission_area
+              %table.table.table-striped.nested_form
+                %tr
+                  %th= t(".user")
+                  %th= t(".permission")
+                  %th.action
+                = f.fields_for :user_permissions, :wrapper => false do |pf|
+                  %tr.fields
+                    %td
+                      - if pf.object.new_record?
+                        = pf.input :resource_object_id, {:as => :select, :collection => target_company.users, :value_method => :id, :label_method => :name, :include_blank => true, :selected => pf.object.resource_id.to_s, :label => false, :input_html => {:class => "span3"}}
+                      - else
+                        %label= pf.object.resource.name
+                        = pf.input :resource_object_id, :as => :hidden, :input_html => { :value => pf.object.resource_id }
+                      = pf.input :resource_type_name, :as => :hidden, :input_html => { :value => "user" }
+                    %td
+                      = pf.input :mode, {:as => :select, :collection => RsetMcm::Permission.mode.options, :selected => pf.object.mode, :label => false, :input_html => {:class => "span3"}}
+                    %td= pf.link_to_remove '', {:class => 'icon-remove-sign'}
+                %tr
+                  %td
+                  %td
+                  %td= f.link_to_add '', :user_permissions, {:class => 'icon-plus-sign'}
+
           .actions
             %button.btn(type="submit")
               %i.icon-ok
@@ -24,4 +49,4 @@
 
   .span3
     .panel.rounded.visible-desktop
-      = render 'action_menu', :directory => @directory, :actions => [:show, :destroy]
+      = render 'action_menu', :directory => @directory, :authority => @current_authority, :actions => [:show, :destroy]

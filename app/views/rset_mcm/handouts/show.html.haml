@@ -25,13 +25,14 @@
           %dd
             - @handout.tag_list.each do |tag|
               %span.label= tag
-        .action
-          = link_to({:action => :edit}, :class => 'btn') do
-            %i.icon-pencil
-            = t("rset_mcm.common.edit")
-          = link_to({:action => :destroy}, :class => 'btn', :method => :delete, :confirm => "Are you sure?") do
-            %i.icon-trash
-            = t("rset_mcm.common.destroy")
+        - if @current_authority.writable?
+          .action
+            = link_to({:action => :edit}, :class => 'btn') do
+              %i.icon-pencil
+              = t("rset_mcm.common.edit")
+            = link_to({:action => :destroy}, :class => 'btn', :method => :delete, :confirm => "Are you sure?") do
+              %i.icon-trash
+              = t("rset_mcm.common.destroy")
   .span6
     = render 'detail_panel', :handout => @handout
 

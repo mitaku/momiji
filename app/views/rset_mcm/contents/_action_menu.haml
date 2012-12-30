@@ -6,22 +6,22 @@
         = link_to content_path(directory) do
           %i.icon-info-sign
           = t("rset_mcm.common.detail")
-    - if actions.include?(:edit)
+    - if actions.include?(:edit) && authority.writable?
       %li
         = link_to edit_content_path(directory) do
           %i.icon-cog
           = t("rset_mcm.common.edit")
-    - if actions.include?(:mkdir)
+    - if actions.include?(:mkdir) && authority.writable?
       %li
         = link_to "#mkdir_dialog", {:'data-toggle' => "modal"} do
           %i.icon-plus-sign
           = t("rset_mcm.common.mkdir")
-    - if actions.include?(:upload)
+    - if actions.include?(:upload) && authority.writable?
       %li
         = link_to "#upload_dialog", {:'data-toggle' => "modal"} do
           %i.icon-upload
           = t("rset_mcm.common.upload")
-    - if actions.include?(:destroy)
+    - if actions.include?(:destroy) && authority.writable?
       - unless directory.is_root?
         %li.divider
         %li

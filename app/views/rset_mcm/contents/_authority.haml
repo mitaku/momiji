@@ -1,2 +1,8 @@
 .content
   %ul.nav.nav-list
+    %li.nav-header= t(".readonly")
+    - @directory.user_permissions.where(:mode => "readonly").each do |u|
+      %li= u.resource.name
+    %li.nav-header= t(".writable")
+    - @directory.user_permissions.where(:mode => "writable").each do |u|
+      %li= u.resource.name
