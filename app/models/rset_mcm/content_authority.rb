@@ -7,7 +7,7 @@ module RsetMcm
   class ContentAuthority
     attr_reader :set, :content
 
-    delegate :empty?, :to => :set
+    delegate :empty?, :include?, :to => :set
 
     def initialize(_content, _obj)
       @content = _content

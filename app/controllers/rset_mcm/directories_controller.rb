@@ -7,6 +7,8 @@ module RsetMcm
   class DirectoriesController < ApplicationController
     respond_to :html
     before_filter :set_directory
+    before_filter :contents_authorize!
+
 
     def create
       @new_directory = @directory.build_directory(params[:directory])
@@ -23,6 +25,7 @@ module RsetMcm
     private
     def set_directory
       @directory = target_company.directories.find(params[:content_id])
+      @current_authority = RsetMcm::ContentAuthority.new(@directory, current_user)
     end
   end
 end

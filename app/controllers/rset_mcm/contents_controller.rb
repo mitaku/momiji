@@ -4,8 +4,8 @@ module RsetMcm
   class ContentsController < ApplicationController
     respond_to :html
 
-    before_filter :authenticate_user!
     before_filter :set_directory, :only => [:show, :edit, :destroy, :update]
+    before_filter :contents_authorize!, :only => [:show, :edit, :destroy, :update]
 
     def show
     end
@@ -31,6 +31,7 @@ module RsetMcm
     private
     def set_directory
       @directory = target_company.directories.find(params[:id])
+      @current_authority = RsetMcm::ContentAuthority.new(@directory, current_user)
     end
   end
 end

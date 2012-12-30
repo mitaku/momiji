@@ -11,6 +11,10 @@ module RsetMcm
 
     has_many :permissions, :dependent => :destroy
 
+    has_many :user_permissions, :dependent => :destroy, :conditions => "resource_type = 'User'", :class_name => "::RsetMcm::Permission", :foreign_key => :content_id
+    accepts_nested_attributes_for :user_permissions, :allow_destroy => true
+    attr_accessible :user_permissions_attributes
+
     has_ancestry
     acts_as_taggable
 
@@ -32,11 +36,19 @@ module RsetMcm
 
     def authority_of(obj)
       set = Set.new([])
+
+      # parents
       ancestors.joins(:permissions).includes(:permissions).each do |content|
-        authority = content.authority(obj)
-        return Set.new([:prohibit]) if authority.include?(:prohibit)
-        set = authority unless authority.empty?
+        auth = content.authority(obj)
+        return Set.new([:prohibit]) if auth.include?(:prohibit)
+        set = auth unless auth.empty?
       end
+
+      # self
+      current_authority = self.authority(obj)
+      return Set.new([:prohibit]) if current_authority.include?(:prohibit)
+      set = current_authority unless current_authority.empty?
+
       set
     end
 
@@ -44,8 +56,13 @@ module RsetMcm
     def authority(obj)
       set = Set.new([])
       if permissions.exists?
-        permissions.each do |permission|
-          set.add(permission.mode.to_sym) if true #TODO
+        results = permissions.where(:resource_type => 'User').where(:resource_id => obj.id).to_a
+        if results.present?
+          results.each do |permission|
+            set.add(permission.mode.to_sym)
+          end
+        else
+          set.add(:prohibit)
         end
       end
       set

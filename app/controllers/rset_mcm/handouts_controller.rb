@@ -6,6 +6,7 @@ module RsetMcm
 
     before_filter :set_directory
     before_filter :set_handout, :only => [:show, :edit, :update, :destroy]
+    before_filter :contents_authorize!
 
     def download
       handout = @directory.handouts.find_by_name!(params[:name])
@@ -50,6 +51,7 @@ module RsetMcm
     private
     def set_directory
       @directory = target_company.directories.find(params[:content_id])
+      @current_authority = RsetMcm::ContentAuthority.new(@directory, current_user)
     end
 
     def set_handout
