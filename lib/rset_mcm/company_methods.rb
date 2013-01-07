@@ -9,6 +9,7 @@ module RsetMcm
       has_many :contents, :class_name => "::RsetMcm::Content", :dependent => :destroy
       has_many :directories, :class_name => "::RsetMcm::Directory"
 
+      acts_as_tagger
       after_create :create_root_directory
     end
 
