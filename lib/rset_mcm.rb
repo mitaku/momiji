@@ -2,6 +2,7 @@
 
 require "rset_mcm/engine"
 require "rset_mcm/company_methods"
+require "rset_mcm/search_methods"
 require "ancestry"
 require "acts-as-taggable-on"
 require "simple_form"

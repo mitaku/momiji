@@ -1,0 +1,40 @@
+= content_for :css do
+  = stylesheet_link_tag "rset_mcm/application"
+
+.row
+  .span9
+    .rset-mcm-search_form_area
+      = form_tag contents_path, :class => "input-append", :method => :get do
+        = text_field_tag :q, params[:q], {:class => 'span7'}
+        %button.btn(type="submit")
+          %i.icon-search
+          = t("common.search")
+
+    - if @groups.empty?
+      .alert.alert-info.alert_block
+        = t(".blank")
+
+    - @groups.each do |parent, contents|
+      .panel.rounded
+        .header.rounded-top
+          %h4
+            %i.icon-folder-open
+            = parent.name
+        .content
+          .rset-mcm-contents
+            - list_with_info_block(contents, "rset_mcm.contents.search_result_blank_html") do |obj|
+              - unless obj.authority(current_user).include?(:prohibit)
+                = render 'content', :content => obj
+
+  .span3
+    .panel.rounded
+      .content
+        %ul.nav.nav-list
+          %li.nav-header
+            %i.icon-tags
+            = t("rset_mcm.common.tags")
+          - target_company.owned_tags.order("name").each do |tag|
+            %li
+              = link_to "#" do
+                %i.icon-tag
+                = tag.name
