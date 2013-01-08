@@ -5,7 +5,7 @@
   .span9
     .rset-mcm-search_form_area
       = form_tag contents_path, :class => "input-append", :method => :get do
-        = text_field_tag :q, params[:q], {:class => 'span7'}
+        = text_field_tag :q, params[:q], {:class => 'input-xxlarge'}
         %button.btn(type="submit")
           %i.icon-search
           = t("common.search")
@@ -35,6 +35,5 @@
             = t("rset_mcm.common.tags")
           - target_company.owned_tags.order("name").each do |tag|
             %li
-              = link_to "#" do
-                %i.icon-tag
-                = tag.name
+              %i.icon-tag
+              = tag.name
