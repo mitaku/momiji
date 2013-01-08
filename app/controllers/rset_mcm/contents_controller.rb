@@ -10,8 +10,9 @@ module RsetMcm
     before_filter :contents_authorize!, :only => [:show, :edit, :destroy, :update]
 
     def index
-      if params[:q].is_a?(String)
-        contents = search_filename(target_company.contents, params[:q])
+      q = params[:q].to_s
+      if q.present?
+        contents = search_filename(target_company.contents, q)
         @groups = contents.group_by { |c| c.parent }
         @groups.delete(nil)
         @groups = @groups.sort_by { |parent, contents| parent.try(:name) }

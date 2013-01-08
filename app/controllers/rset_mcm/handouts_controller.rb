@@ -9,7 +9,7 @@ module RsetMcm
     before_filter :contents_authorize!
 
     def download
-      handout = @directory.handouts.find_by_name!(params[:name])
+      handout = @directory.handouts.find_by_name!(params[:name].to_s)
 
       response.header['X-Accel-Redirect'] = '/app/mcm/.reploxy'
       response.header["X-Reproxy-Url"] = handout.data.to_s
