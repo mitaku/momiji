@@ -18,8 +18,6 @@ module RsetMcm
     has_ancestry
     acts_as_taggable
 
-    before_save :set_tag_owner
-
     def icon_path
       "rset_mcm/filetype/#{file_type}.png"
     end
@@ -74,12 +72,8 @@ module RsetMcm
       owner_tags_on(company, :tags)
     end
 
-    private
-    def set_tag_owner
-      # Set the owner of some tags based on the current tag_list
-      set_owner_tag_list_on(company, :tags, self.tag_list)
-      # Clear the list so we don't get duplicate taggings
-      self.tag_list = nil
+    def tag_list=(new_tags)
+      set_owner_tag_list_on(company, :tags, new_tags)
     end
   end
 end
