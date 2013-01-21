@@ -25,6 +25,8 @@ Gem::Specification.new do |s|
   s.add_dependency "enumerize"
   s.add_dependency "simple_form"
   s.add_dependency "nested_form"
+  s.add_dependency "komachi_validation"
+  s.add_dependency "trim_spaces_for"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "tapp"
