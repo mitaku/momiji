@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rset-mcm (0.3.0)
+    rset-mcm (0.3.1)
       acts-as-taggable-on
       ancestry
       carrierwave
