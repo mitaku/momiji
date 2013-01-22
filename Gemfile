@@ -11,6 +11,7 @@ gem 'pry-rails'
 gem 'carrierwave'
 gem 'simple_form'
 gem 'nested_form'
+gem 'trim_spaces_for'
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or

@@ -8,6 +8,8 @@ require "acts-as-taggable-on"
 require "simple_form"
 require "enumerize"
 require "nested_form"
+require "komachi_validation"
+require "trim_spaces_for"
 
 module RsetMcm
 end

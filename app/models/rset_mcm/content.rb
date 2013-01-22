@@ -7,13 +7,16 @@ module RsetMcm
 
     validates :name, :uniqueness => {:scope => [:company_id, :ancestry]},
                      :length => {:maximum => 60, :allow_blank => true},
-                     :presence => true
+                     :presence => true,
+                     :text => {:allow_blank => true}
 
     has_many :permissions, :dependent => :destroy
 
     has_many :user_permissions, :dependent => :destroy, :conditions => "resource_type = 'User'", :class_name => "::RsetMcm::Permission", :foreign_key => :content_id
     accepts_nested_attributes_for :user_permissions, :allow_destroy => true
     attr_accessible :user_permissions_attributes
+
+    trim_spaces_for :name
 
     has_ancestry
     acts_as_taggable
