@@ -9,7 +9,6 @@ module RsetMcm
     before_filter :set_directory
     before_filter :contents_authorize!
 
-
     def create
       @new_directory = @directory.build_directory(params[:directory])
 

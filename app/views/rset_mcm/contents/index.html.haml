@@ -5,7 +5,7 @@
   .span9
     .rset-mcm-search_form_area
       = form_tag contents_path, :class => "input-append", :method => :get do
-        = text_field_tag :q, params[:q], {:class => 'input-xxlarge'}
+        = text_field_tag :q, params[:q], {:class => 'input-xlarge'}
         %button.btn(type="submit")
           %i.icon-search
           = t("common.search")

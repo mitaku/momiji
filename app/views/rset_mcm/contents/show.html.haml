@@ -19,8 +19,8 @@
 
   .span3
     - if @current_authority.writable?
-      .panel.rounded.visible-desktop
+      .panel.rounded
         = render 'action_menu', :directory => @directory, :authority => @current_authority, :actions => [:edit, :destroy, :mkdir, :upload]
 
-    .panel.rounded.visible-desktop
+    .panel.rounded
       = render 'authority', :directory => @directory
